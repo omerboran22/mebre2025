@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Örnek Semantik Sayfa</title>
+    <style>
+      /* Basit görselleştirme (isteğe bağlı) */
+      body {
+        font-family: system-ui, Arial, sans-serif;
+        line-height: 1.6;
+        margin: 0;
+        padding: 0;
+      }
+      header,
+      footer {
+        background: #f2f2f2;
+        padding: 1rem;
+      }
+      nav a {
+        margin-right: 0.8rem;
+        text-decoration: none;
+        color: #0366d6;
+      }
+      .container {
+        max-width: 900px;
+        margin: 1rem auto;
+        padding: 0 1rem;
+      }
+      .grid {
+        display: flex;
+        gap: 1rem;
+      }
+      main {
+        flex: 2;
+      }
+      aside {
+        flex: 1;
+        background: #fafafa;
+        padding: 1rem;
+        border-left: 1px solid #eee;
+      }
+      article {
+        margin-bottom: 1.5rem;
+      }
+      figure {
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <h1>Site Başlığı</h1>
+        <p>Kısa site açıklaması veya slogan</p>
+        <nav aria-label="Ana navigasyon">
+          <a href="#">Ana Sayfa</a>
+          <a href="#">Hakkında</a>
+          <a href="#">Blog</a>
+          <a href="#">İletişim</a>
+        </nav>
+      </div>
+    </header>
+
+    <div class="container grid">
+      <main>
+        <section aria-labelledby="son-haber">
+          <h2 id="son-haber">Son Haber</h2>
+          <article>
+            <h3>Semantik HTML Neden Önemli?</h3>
+            <p>
+              <time datetime="2025-10-18">18 Ekim 2025</time> — Semantik etiketler, erişilebilirliği ve arama motoru
+              optimizasyonunu iyileştirir...
+            </p>
+            <figure>
+              <img src="https://via.placeholder.com/800x300" alt="Örnek görsel" />
+              <figcaption>Örnek görsel altyazısı</figcaption>
+            </figure>
+          </article>
+        </section>
+
+        <section aria-labelledby="kaynaklar">
+          <h2 id="kaynaklar">Kaynaklar & Diğer Yazılar</h2>
+          <article>
+            <h3>Başka bir makale</h3>
+            <p>Kısa özet...</p>
+          </article>
+        </section>
+      </main>
+
+      <aside>
+        <h4>Yardımcı Bilgiler</h4>
+        <p>Popüler bağlantılar, kısa notlar veya reklamlar buraya gelir.</p>
+      </aside>
+    </div>
+
+    <footer>
+      <div class="container">
+        <p>&copy; 2025 Örnek Site</p>
+        <address>Hazırlayan: Örnek Kişi — <a href="mailto:info@ornek.com">info@ornek.com</a></address>
+      </div>
+    </footer>
+  </body>
+</html>

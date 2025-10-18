@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Örnek Tablo</title>
+    <style>
+      table {
+        border-collapse: collapse; /* kenar çizgilerini birleştirir */
+        width: 60%;
+        margin: 20px auto;
+      }
+      caption {
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+      th,
+      td {
+        border: 1px solid #999;
+        padding: 8px 12px;
+        text-align: center;
+      }
+      thead {
+        background-color: #f2f2f2;
+      }
+      tfoot {
+        background-color: #fafafa;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <table>
+      <caption>
+        Öğrenci Not Tablosu
+      </caption>
+      <thead>
+        <tr>
+          <th>Ad Soyad</th>
+          <th>Ders</th>
+          <th>Not</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td rowspan="2">Ahmet Yılmaz</td>
+          <td>Matematik</td>
+          <td>85</td>
+        </tr>
+        <tr>
+          <td rowspan="2">Fizik</td>
+          <td>85</td>
+        </tr>
+        <tr>
+          <td>Elif Demir</td>
+          <td>92</td>
+        </tr>
+        <tr>
+          <td>Can Kaya</td>
+          <td>Kimya</td>
+          <td>78</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="2">Sınıf Ortalaması</td>
+          <td>85</td>
+        </tr>
+      </tfoot>
+    </table>
+
+    <table>
+      <caption>
+        Öğrenci Not Tablosu
+      </caption>
+      <thead>
+        <tr>
+          <th>Ad Soyad</th>
+          <th>Ders</th>
+          <th>Ilk sinav</th>
+          <th>Son Sinav</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td rowspan="2">Ahmet Yılmaz</td>
+          <td rowspan="4">Matematik</td>
+          <td>85</td>
+          <td>90</td>
+        </tr>
+        <tr>
+          <td>85</td>
+          <td>88</td>
+        </tr>
+        <tr>
+          <td>Elif Demir</td>
+          <td>92</td>
+          <td>95</td>
+        </tr>
+        <tr>
+          <td>Can Kaya</td>
+          <td>78</td>
+          <td>82</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="3">Sınıf Ortalaması</td>
+          <td>85</td>
+        </tr>
+      </tfoot>
+    </table>
+  </body>
+</html>

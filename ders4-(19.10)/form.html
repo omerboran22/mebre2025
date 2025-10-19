@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formları Öğreniyoruz</title>
+    <style>
+      form input {
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <form action="https://www.example.com/submit" method="POST">
+      <label for="email">
+        E-posta:
+        <input id="email" placeholder="Omerboran@mail.com" type="email" name="eposta" />
+      </label>
+      <br />
+      <label for="">
+        Şifre:
+        <input type="text" name="sifre" />
+      </label>
+      <label for="">
+        Telefon no:
+        <input type="text" placeholder="+90535 555 12 12" name="telefon" />
+      </label>
+      <br />
+      <label for="cinsiyetErkek">
+        <input id="cinsiyetErkek" type="radio" style="display: none" name="cinsiyet" value="erkek" /> Erkek <br />
+      </label>
+      <input type="radio" name="cinsiyet" value="kadin" /> Kadın<br />
+      <input type="checkbox" name="sozlesme" /> Sözleşmeyi kabul ediyorum<br />
+      <input type="checkbox" name="abonelik" /> Abone olmak istiyorum<br />
+      <input type="file" name="" id="" /><br />
+      <input type="number" name="" id="" /><br />
+      <input type="datetime-local" name="" id="" /><br />
+      <select name="ulkeler" id="">
+        <option value="turkiye">Türkiye</option>
+        <option value="almanya">Almanya</option>
+        <option value="amerika">Amerika</option>
+        <option value="ingiltere">İngiltere</option>
+      </select>
+      <br />
+      <textarea name="mesaj" cols="30" rows="10" placeholder="Mesajınızı buraya yazın..."></textarea><br />
+      <input type="submit" value="Gönder" /><br />
+      <input type="reset" value="Temizle" /><br />
+      <button type="button">Gönder</button>
+    </form>
+  </body>
+</html>

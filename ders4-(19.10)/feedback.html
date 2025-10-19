@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FeedBack Form</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        font-family: "Segoe UI", Roboto, sans-serif;
+      }
+
+      body {
+        background: #f2f4f8;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+
+      .feedback-form {
+        background: #ffffff;
+        padding: 30px 25px;
+        border-radius: 12px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 400px;
+      }
+
+      h2 {
+        text-align: center;
+        color: #0b1f3f;
+        margin-bottom: 20px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 6px;
+        font-weight: 500;
+        color: #333;
+      }
+
+      input[type="text"],
+      input[type="email"],
+      textarea {
+        width: 100%;
+        padding: 10px 12px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        margin-bottom: 15px;
+        font-size: 14px;
+        transition: all 0.2s ease;
+      }
+
+      input[type="text"]:focus,
+      input[type="email"]:focus,
+      textarea:focus {
+        border-color: #145374;
+        box-shadow: 0 0 4px rgba(20, 83, 116, 0.3);
+        outline: none;
+      }
+
+      textarea {
+        resize: vertical;
+      }
+
+      input[type="submit"] {
+        width: 100%;
+        padding: 12px;
+        background-color: #145374;
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.25s;
+      }
+
+      input[type="submit"]:hover {
+        background-color: #0b1f3f;
+      }
+    </style>
+  </head>
+  <body>
+    <form action="http://localhost:3000/feedback" method="post">
+      <h2>Geri Bildirim</h2>
+
+      <label for="name">Adınız</label>
+      <input type="text" id="name" name="name" />
+
+      <label for="email">E-posta</label>
+      <input type="email" id="email" name="email" />
+
+      <label for="rating">Değerlendirme</label>
+      <input type="range" id="rating" name="rating" min="1" max="10" />
+      <label for="message">Mesajınız</label>
+      <textarea id="message" name="message" rows="4" placeholder="Yorumunuzu yazın..."></textarea>
+
+      <br /><br />
+      <input type="submit" value="Gönder" />
+    </form>
+  </body>
+</html>

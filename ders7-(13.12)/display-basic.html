@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Document</title>
+    <style>
+      .box {
+        width: 100px;
+        height: 100px;
+      }
+      .bg-red {
+        background-color: red;
+      }
+      .bg-blue {
+        background-color: blue;
+      }
+      .bg-green {
+        background-color: green;
+      }
+      .d-inline {
+        display: inline;
+      }
+      .d-block {
+        display: block;
+      }
+      .d-inline-block {
+        display: inline-block;
+      }
+      .d-none {
+        display: none;
+      }
+      .visible {
+        visibility: visible;
+      }
+      .hidden {
+        visibility: hidden;
+      }
+    </style>
+  </head>
+  <body>
+    Lorem ipsum dolor,
+    <div class="box bg-green d-inline" style="border: 2px solid black; border-radius: 25px">
+      sit amet consectetur adipisicing elit.
+    </div>
+    Ad iusto quo asperiores, accusamus doloremque nulla eos facere necessitatibus quasi neque utdicta! <br /><br /><br />
+    <div class="box d-inline bg-red">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi mollitia
+    </div>
+    <div class="box d-inline bg-blue">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi mollitia
+    </div>
+    <br />
+    <!-- block -->
+    <div class="box bg-red d-inline-block"></div>
+    <div class="box bg-blue d-none "></div>
+    <div class="box bg-green d-inline-block"></div> <br>
+
+    <!-- visibility -->
+    <div class="box bg-red d-inline-block"></div>
+    <div class="box bg-blue d-inline-block hidden"></div>
+    <div class="box bg-green d-inline-block"></div>
+  </body>
+</html>

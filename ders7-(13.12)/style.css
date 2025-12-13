@@ -1,5 +1,5 @@
 .box {
-  display: inline-block;
+  display: none;
   width: 100px;
   height: 100px;
   background-color: lightblue;
@@ -32,4 +32,17 @@
 
 .box:nth-child(4) {
   border: 5px solid red;
+}
+
+
+.rootkutu{
+  height: 250px;
+  border: red 5px solid;
+}
+
+
+.kutu {
+  width: 5rem;
+  height: 70%;
+  background-color: black;
 }

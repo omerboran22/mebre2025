@@ -1,0 +1,35 @@
+.box {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  background-color: lightblue;
+  margin: 10px;
+}
+
+.box:first-child {
+  border-top: 5px solid red;
+  border-right-color: #800080;
+  border-right-width: 5px;
+  border-right-style: dotted;
+  border-bottom-color: rgb(255, 165, 0);
+  border-bottom-width: 5px; 
+  border-bottom-style: dashed;
+  border-left-color: green;
+  border-left-width: 5px;
+  border-left-style: double;
+  border-radius: 15px;
+}
+
+.box:nth-child(2) {
+  border: 5px dashed red;
+}
+
+.box:nth-child(3) {
+  border-width: 5px;
+  border-style: double;
+  border-color: red;
+}
+
+.box:nth-child(4) {
+  border: 5px solid red;
+}

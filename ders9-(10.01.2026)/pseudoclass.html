@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    CSS Pseudo-classes
+  </title>
+  <style>
+    a:link {
+      color: rgb(218, 30, 159);
+    }
+
+    a:visited {
+      color: purple;
+    }
+
+    a:hover {
+      color: red;
+    }
+
+    a:active {
+      color: orange;
+    }
+
+    input:focus {
+      border: 2px solid blue;
+      outline: none;
+    }
+
+    li:first-child {
+      font-weight: bold;
+    }
+
+    li:last-child {
+      font-style: italic;
+    }
+
+    li:nth-child(1) {
+      background-color: lightgray;
+    }
+
+    li:nth-child(3) {
+      background-color: lightgray;
+    }
+
+    p:first-of-type {
+      text-decoration: underline;
+    }
+
+    p:last-of-type {
+      text-transform: uppercase;
+    }
+
+    p:nth-of-type(2) {
+      color: green;
+    }
+
+    div:not(.highlight) {
+      opacity: 0.5;
+    }
+  </style>
+</head>
+<body>
+
+  <a href="#">Bu bir linktir</a>
+  <br><br>
+  <input type="text" placeholder="Buraya tıklayın">
+  <br><br>
+  <ul>
+    <li>Birinci öğe (kalın)</li>
+    <li>İkinci öğe</li>
+    <li>Üçüncü öğe</li>
+    <li>Dördüncü öğe (italik)</li>
+  </ul>
+  <br>
+  <div>
+    <p>Bu ilk paragraf (altı çizili)</p>
+    <p>Bu ikinci paragraf (yeşil)</p>
+    <p>Bu üçüncü paragraf (büyük harf)</p>
+  </div>
+  <br>
+  <div class="normal">
+    Bu div vurgulanmamış ve yarı saydamdır.
+  </div>
+  <div class="highlight">
+    Bu div vurgulanmış ve tam opaktır.
+  </div>
+</body>
+</html>

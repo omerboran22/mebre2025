@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Combinators</title>
+  <style>
+    div p {
+      color: red;
+    }
+
+    div section span {
+      color: blue;
+    }
+
+    ul *{
+      font-size: 20px;
+    }
+
+    ul > li {
+      font-weight: bold;
+    }
+
+    h2 + p {
+      margin-top: 0;
+      font-style: italic;
+      color: red;
+    }
+
+    h3 ~ p {
+      color: green;
+    }
+
+    .box {
+      width: 100px;
+      height: 100px;
+      background-color: lightgray;
+      margin: 10px 0;
+    }
+
+    .box .highlighted {
+      background-color: yellow;
+    }
+
+    [data-active="true"].box {
+      border: 2px solid black;
+    }
+
+  </style>
+</head>
+<body>
+  <div>
+    <section>
+      Bu paragraf bir div içinde ve
+       <span> mavi</span>
+       <div>
+        <p>Bu paragraf bir div içinde ve kırmızı olacaktır. <span> mavi</span></p>
+       </div>
+    </section>
+  </div>
+  <p>Bu paragraf herhangi bir div dışında ve mavi olmayacaktır.</p>
+
+  <ul>
+    <li>Birinci öğe (kalın)</li>
+    <li>İkinci öğe (kalın)</li>
+    <li>Üçüncü öğe (kalın)</li>
+  </ul>
+
+  <div class="box" data-active="true"></div>
+
+  <div class="box">
+    <p class="highlighted">Bu paragraf sarı arka plana sahip olacak.</p>
+    <p>Bu paragraf normal kalacak.</p>
+  </div>
+
+  <h2>Alt Başlık</h2>
+  <p>Bu paragraf bir h2'nin ardından gelir, üst kenarboşluğu olmaz ve italik olur.</p>
+
+  <h3>Başka Bir Alt Başlık</h3>
+  <p>Bu paragraf bir h3'ün ardından gelir ve yeşil olacaktır.</p>
+  <p>Bu paragraf da bir h3'ün ardından gelir ve yeşil olacaktır.</p>
+  
+</body>
+</html>

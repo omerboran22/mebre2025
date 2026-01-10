@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Liste ve Link Şekillendirme</title>
+  <style>
+    .custom-list {
+      /* list-style-type: disc; */
+      list-style-image: url('../ders7-(13.12)/material-symbols--apk-install-outline.svg');
+      padding-left: 20px;
+    }
+    .custom-list-item {
+      margin: 5px 0;
+      color: red;
+    }
+    .custom-link {
+      text-decoration: none;
+      color: #0066cc;
+    }
+    .custom-link:hover {
+      text-decoration: underline;
+      color: #004499;
+    } 
+    .custom-link:active {
+      color: red;
+    }
+    .custom-link:visited {
+      color: green;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Özel Şekillendirilmiş Liste</h2>
+  <ul class="custom-list">
+    <li class="custom-list-item">Öğe 1</li>
+    <li class="custom-list-item">Öğe 2</li>
+    <li class="custom-list-item">Öğe 3</li>
+    <li class="custom-list-item">Öğe 4</li>
+  </ul>
+
+  <h2>Özel Şekillendirilmiş Link</h2>
+  <p>Detaylı bilgi için <a href="https://www.mebre.com.tr/" class="custom-link">buraya tıklayın</a>.</p>
+</body>
+</html>

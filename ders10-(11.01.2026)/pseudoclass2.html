@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    CSS Pseudo-classes - Part 2
+  </title>
+  <style>
+    .cursor-pointer:hover {
+      cursor: pointer;
+    }
+    .cursor-change:hover {
+      cursor: crosshair;
+    }
+    .cursor-move:hover {
+      cursor: move;
+    }
+    .cursor-text:hover {
+      cursor: text;
+    }
+    .cursor-wait:hover {
+      cursor: wait;
+    }
+    .text-input:focus {
+      border: 2px solid blue;
+      outline: none;
+    }
+    .form-group:has(.text-input:focus) .text-label {
+      color: green;
+      font-weight: bold;
+    }
+
+    .text-input:required:invalid {
+      border: 2px solid red;
+    }
+    
+  </style>
+</head>
+<body>
+  <h1>CSS Pseudo-classes - Part 2</h1>
+
+  <p class="cursor-pointer">Hover over me to see the pointer cursor.</p>
+  <p class="cursor-change">Hover over me to see the crosshair cursor.</p>
+  <p class="cursor-move">Hover over me to see the move cursor.</p>
+  <p class="cursor-text">Hover over me to see the text cursor.</p>
+  <p class="cursor-wait">Hover over me to see the wait cursor.</p>
+
+  <form action="">
+    <div class="form-group">
+      <label for="name" class="text-label">Name:</label>
+      <input type="text" id="name" name="name" class="text-input" required><br><br>
+    </div>
+    <input type="submit" value="Submit">
+  </form>
+</body>
+</html>

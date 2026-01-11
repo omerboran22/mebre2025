@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    CSS Pseudo-classes - Part 2 -Example 2
+  </title>
+  <style>
+    .meyve-listesi{
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+    .turuncu{
+      background-color: orange;
+    } 
+    .yeşil{
+      background-color: limegreen;
+    } 
+    
+    .meyve-listesi li {
+      padding: 5px;
+      margin: 5px;
+      font-size: 18px;
+    }
+
+    .meyve-listesi li:not(:first-child){
+      font-size: 25px;
+    }
+
+    .meyve-listesi li:not(.turuncu){
+      background-color: lightblue;
+    }
+
+    .meyve-listesi li:first-child{
+      background-color: green;
+    }
+    .meyve-listesi li:is(.turuncu, .yeşil){
+      color: white;
+      font-weight: bold;
+    } 
+    .meyve-listesi li:has(span) span{
+      font-size: 12px;
+      background-color: lightgray;
+      padding: 2px 5px;
+      border-radius: 5px;
+    }
+    .meyve-listesi li:has(cilek) cilek{
+      font-size: 12px;
+      background-color: pink;
+      padding: 2px 5px;
+      border-radius: 5px;
+    }
+    
+  </style>
+</head>
+<body>
+
+  <ul class="meyve-listesi">
+    <li>Erik</li>
+    <li class="turuncu">Portakal</li>
+    <li class="yeşil">Elma</li>
+    <li>Armut 
+      <span>
+        🍐
+      </span>
+    </li>
+    <li>Çilek
+      <cilek>
+        🍓
+      </cilek>
+    </li>
+  </ul>
+  
+</body>
+</html>

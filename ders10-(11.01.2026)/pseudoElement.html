@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    Pseudo Element 
+  </title>
+  <style>
+    .box {
+      width: 200px;
+      height: 75px;
+      background-color: lightblue;
+      font-size: 24px;
+      text-align: center;
+    }
+
+    .box::before {
+      display: block;
+      content: "🍕";
+      width: 100%;
+      text-align: center;
+      font-size: 16px;
+      color: darkblue;
+    }
+
+    .box::after {
+      display: block;
+      content: "🍕";
+      width: 100%;
+      text-align: center;
+      font-size: 16px;
+      color: darkblue;
+    }
+    .img-card {
+      width: 200px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      height: 200px;
+      overflow: hidden;
+      border-radius: 16px;
+    }
+    .img-card::before {
+      text-align: center;
+      vertical-align: middle;
+      color: white;
+      content: "Rastgele bir resim";
+      position: absolute;
+      top: 50%;
+      width: 200px;
+      height: 50px;
+      background: rgba(206, 39, 39, 0.8);
+      border-radius: 16px;
+      pointer-events: none;
+    }
+    p::first-letter {
+      font-size: 32px;
+      color: red;
+      font-weight: bold;
+    }
+    p::first-line {
+      font-size: 20px;
+      color: blue;
+      font-weight: bold;
+    }
+    p::selection {
+      background-color: yellow;
+      color: black;
+    }
+    input::placeholder {
+      color: red;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    content
+  </div>
+
+  <div class="img-card">
+    <img src="https://picsum.photos/200/200" alt="">
+  </div>
+
+  <p>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga non nisi ipsam ipsum ratione debitis labore molestiae, deserunt doloribus dignissimos accusamus optio dicta distinctio nesciunt, quo tempore eveniet? Debitis, dolorem?
+  </p>
+  <input type="text" placeholder="ismini giriniz">
+</body>
+</html>

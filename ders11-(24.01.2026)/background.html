@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Background Stillendirme</title>
+  <style>
+    .box{
+      width: 400px;
+      height: 300px;
+      border: 2px solid black;
+      display: inline-block;
+      margin: 5px;
+    }
+    .bg-green{
+      background-color: green;
+    }
+
+    /* Arka plan resimli stillendirme */
+    .bg-image{
+      background-image: url('https://picsum.photos/800/800?random=1');
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+    /* Sabit arka plan resimli stillendirme */
+    .bg-fix{
+      background-image: url('https://picsum.photos/800/800?random=2');
+      background-attachment: fixed;
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="box bg-green"></div>
+  <div class="box bg-fix"></div>
+  <div class="box bg-image"></div>
+  
+</body>
+</html>

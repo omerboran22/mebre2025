@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <title>
+    CSS Tekrar Sitesi
+  </title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    .header{
+      width: 100%;
+      height: 80px;
+      margin: auto;
+      background-color: #000;
+      color: #fff;
+    }
+    .header .logo {
+      display: inline-block;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      border: 2px solid #000;
+      overflow: hidden;
+    }
+    .header .logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .header .navigation {
+      display: inline-block;
+    }
+
+    .header .navigation ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      align-items: center;
+      height: 100%;
+    }
+
+     .header .navigation ul li {
+      display: inline-block;
+      margin-right: 20px;
+     }
+    .header .navigation ul li a {
+      text-decoration: none;
+      color: inherit;
+      font-weight: 500;
+     }
+
+
+    .banner {
+      width: 100%;
+      height: 300px;
+      background-image: url('https://fastly.picsum.photos/id/676/1200/400.jpg?hmac=U9BTRb5OXfygM2Gp4xLuX-hvIay5hETdrerFK0s36Ps');
+      background-size: cover;
+      background-position: 200% 50%;
+      background-attachment: fixed;
+    }
+    .banner h1 {
+      color: #fff;
+      text-align: center;
+      padding-top: 100px;
+      font-size: 32px;
+    }
+    .banner button {
+      display: block;
+      margin: 20px auto;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #ff5733;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .about {
+      background-color: aliceblue;
+      padding: 40px;
+      text-align: center;
+    }
+    .about p {
+      width: 60%;
+      margin: auto;
+      border: 1px solid green;
+      padding: 20px;
+    }
+    .services {
+      width: 100%;
+      background-color: #f4f4f4;
+      padding: 40px;
+    }
+    .service-item {
+      display: inline-block;
+      width: 20%;
+      text-align: center;
+      margin-right: 3%;
+      border: 1px solid red;
+      padding: 20px;
+    }
+    .service-item i{
+      color: #ff5733;
+      margin-bottom: 10px;
+    }
+    footer {
+      background-color: #000;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="header">
+    <div class="logo">
+      <img src="https://picsum.photos/200/200" alt="">
+    </div>
+    <nav class="navigation">
+      <ul>
+        <li><a href="#"><i class="fa-solid fa-house"></i> <span>Home</span></a></li>
+        <li><a href="#"><i class="fa-solid fa-info"></i> <span></span>About</span></a></li>
+        <li><a href="#"><i class="fa-solid fa-briefcase"></i> <span>Services</span></a></li>
+        <li><a href="#"><i class="fa-solid fa-envelope"></i> <span>Contact</span></a></li>
+      </ul>
+    </nav>
+  </header>
+  <div class="banner">
+    <h1>Web Tasarım Öğreniyoruz</h1>
+    <button>
+      <i class="fa-solid fa-play"></i>
+      <span> Bize Katıl</span>
+    </button>
+  </div>
+
+  <div class="about">
+    <h2>HAKKIMIZDA</h2>
+    <p>
+     Bu site CSS konularını tekrar etmek için hazırlanmıştır. Box Model, butonlar, ikonlar ve arka planlar kullanılmıştır.
+    </p>
+  </div>
+
+  <div class="services">
+    <div class="service-item">
+      <i class="fa-solid fa-code fa-2x"></i>
+      <h3>HTML & CSS</h3>
+    </div>
+    <div class="service-item">
+      <i class="fa-solid fa-paint-brush fa-2x"></i>
+      <h3>Tasarım</h3>
+    </div>
+    <div class="service-item">
+      <i class="fa-solid fa-mobile-screen fa-2x"></i>
+      <h3>Mobil Uyumlu</h3>
+    </div>
+  </div>
+<footer>
+  <p>&copy; 2026 CSS Tekrar Sitesi. Tüm hakları saklıdır.</p>
+</footer>
+
+</body>
+
+</html>

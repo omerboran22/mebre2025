@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Float Uygulama Örneği</title>
+    <style>
+        /* 1. GENEL AYARLAR (Reset) */
+        * {
+            box-sizing: border-box; /* Padding ekleyince kutu şişmesin diye */
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f4f4f4;
+            line-height: 1.6;
+        }
+
+        /* 2. HELPER CLASSES (Yardımcı Sınıflar) 
+           Ders notlarında bahsettiğin "tekrar kullanılabilir" kodlar.
+        */
+        .container {
+            width: 80%;
+            margin: auto; /* Sayfayı ortalar */
+            overflow: hidden; /* Taşmaları gizler */
+        }
+
+        .text-center { text-align: center; }
+        
+        .shadow { box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        
+        .mb-20 { margin-bottom: 20px; }
+
+        /* 3. HEADER (Başlık) */
+        header {
+            background: #333;
+            color: #fff;
+            padding-top: 30px;
+            min-height: 70px;
+            border-bottom: 3px solid #0056b3;
+        }
+
+        header a {
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 16px;
+        }
+
+        header ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        header li {
+            float: left; /* Menü elemanlarını yan yana dizer */
+            display: inline;
+            padding: 0 20px;
+        }
+
+        header #branding {
+            float: left;
+        }
+
+        header nav {
+            float: right;
+            margin-top: 10px;
+        }
+
+        /* 4. ANA İÇERİK (SOL SÜTUN) - FLOAT LEFT */
+        #main-col {
+            float: left;
+            width: 70%; /* Sayfanın %70'ini kapla */
+            padding: 20px;
+            background-color: white;
+            margin-top: 20px;
+        }
+
+        /* RESİM YÜZDÜRME (Floating Image) */
+        .makale-resmi {
+            float: left; /* Resmi sola yasla */
+            margin-right: 20px; /* Yazı ile resim arasına boşluk koy */
+            margin-bottom: 10px;
+            width: 200px;
+            border: 5px solid #eee;
+        }
+
+        /* 5. YAN MENÜ (SAĞ SÜTUN) - FLOAT RIGHT */
+        #sidebar {
+            float: right;
+            width: 28%; /* %2 lik payı boşluk için bıraktık */
+            padding: 20px;
+            background-color: #333;
+            color: white;
+            margin-top: 20px;
+        }
+
+        /* 6. FOOTER VE CLEAR (Temizleme) */
+        footer {
+            padding: 20px;
+            margin-top: 20px;
+            color: #fff;
+            background-color: #0056b3;
+            text-align: center;
+            
+            /* ÖNEMLİ: Yukarıdaki float'ları temizlemezsek footer yukarı kayar! */
+            clear: both; 
+        }
+
+        /* Ekstra Dekorasyon */
+        .kutu {
+            background: #444;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div id="branding">
+                <h1><span style="color:#0056b3">Tekno</span>Lise</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">Anasayfa</a></li>
+                    <li><a href="#">Dersler</a></li>
+                    <li><a href="#">İletişim</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        
+        <section id="main-col" class="shadow">
+            <h2 class="mb-20">Yapay Zeka Nedir?</h2>
+            
+            <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=400&auto=format&fit=crop&q=60" alt="AI Robot" class="makale-resmi">
+            
+            <p>
+                <strong>(Float Left Örneği)</strong> Yapay zeka, bilgisayarların insanlar gibi düşünmesini sağlayan bir teknolojidir. Bu resim CSS'de "float: left" kullanılarak sola yaslanmıştır. Gördüğünüz gibi metinler resmin altından başlamak yerine, resmin sağ tarafındaki boşluğu doldurarak akmaktadır. Gazete sütunu mantığı tam olarak budur.
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum. Cras venenatis euismod malesuada. Nulla facilisi. Uyumluluk ve esneklik, modern web tasarımının temel taşlarıdır. Float özelliği eskiden tüm sayfa tasarımlarında kullanılırdı, günümüzde ise daha çok bu şekilde metin içi resimlerde tercih ediliyor.
+            </p>
+            <br>
+            <h3>Neden Öğrenmeliyiz?</h3>
+            <p>
+                Web tasarımın temeli kutu modelidir (Box Model). Kutuları yan yana getirmenin en ilkel ama en temel yolu "Float" mantığını kavramaktır. Flexbox ve Grid'e geçmeden önce bu mantığı anlamak, CSS'in tarihini ve çalışma prensibini anlamanızı sağlar.
+            </p>
+        </section>
+
+        <aside id="sidebar" class="shadow">
+            <h3 class="mb-20 text-center">Haberler</h3>
+            <div class="kutu">
+                <h4>CSS Dersleri</h4>
+                <p>Float konusu işleniyor. Haftaya Flexbox'a geçilecek.</p>
+            </div>
+            <div class="kutu">
+                <h4>Sınav Tarihi</h4>
+                <p>Vize sınavları önümüzdeki ayın ilk haftası.</p>
+            </div>
+            <div class="kutu" style="background-color: #e8491d;">
+                <h4>Duyuru!</h4>
+                <p>Ödev teslimleri Cuma gününe kadar yapılmalı.</p>
+            </div>
+        </aside>
+
+    </div>
+
+    <footer>
+        <p>TeknoLise Web Tasarım Dersi &copy; 2024</p>
+    </footer>
+
+</body>
+</html>

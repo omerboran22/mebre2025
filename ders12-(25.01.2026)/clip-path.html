@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clip Path</title>
+  <style>
+    .path-circle{
+      width: 400px;
+      height: 300px;
+      overflow: hidden;
+      clip-path: circle(150px at 15px 15px);
+      border: 2px solid black;
+      display: inline-block;
+    }
+    .path-circle img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .border{
+      padding: 10px;
+      border: 5px solid red;
+      display: inline-block;
+    }
+    .path-elipse{
+      width: 400px;
+      height: 300px;
+      overflow: hidden;
+      clip-path: ellipse(100px 150px at 25% 50%);
+      border: 2px solid black;
+      display: inline-block;
+    }
+
+    .path-polygon{
+      width: 400px;
+      height: 300px;
+      clip-path: polygon(
+        50% 0%,
+        10% 15%, 
+        0% 100%,
+        100% 100%,
+        70% 15% 
+          );
+      border: 2px solid black;
+      display: inline-block;
+    }
+
+    .path-hexagon{
+      width: 400px;
+      height: 400px;
+      clip-path: polygon(
+        25% 0%,
+        0% 50%,
+        25% 100%,
+        75% 100%,
+        100% 50%,
+        75% 0%
+          );
+      border: 2px solid black;
+      display: inline-block;
+    }
+
+    .path-righ-arrow{
+      width: 400px;
+      height: 300px;
+      clip-path: polygon(
+        50% 0%,
+        50% 20%,
+        0% 20%,
+        0% 80%,
+        50% 80%,
+        50% 100%,
+        100% 50%
+          );
+      border: 2px solid black;
+      display: inline-block;
+    }
+
+
+  </style>
+</head>
+<body>
+
+    <div class="path-circle border">
+      <img src="https://picsum.photos/400/400?random=1" alt="">
+    </div>
+
+    <div class="path-elipse border">
+      <img src="https://picsum.photos/400/400?random=2" alt="">
+    </div>
+
+    <div class="path-polygon border">
+      <img src="https://picsum.photos/400/400?random=3" alt="">
+    </div>
+
+    <div class="path-hexagon border">
+      <img src="https://picsum.photos/400/400?random=4" alt="">
+    </div>
+
+    <div class="path-righ-arrow ">
+      <img src="https://picsum.photos/400/400?random=5" alt="">
+    </div>
+  
+</body>
+</html>

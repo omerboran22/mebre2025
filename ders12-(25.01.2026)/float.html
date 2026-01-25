@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Float Example</title>
+    <style>
+      .float-left {
+        float: left;
+        margin-right: 5px;
+      }
+      .float-right {
+        float: right;
+        margin-left: 5px;
+      }
+
+      .clear {
+        clear: both;
+      }
+
+      .box {
+        width: 500px;
+      }
+
+      section {
+        box-sizing: border-box;
+        border: 1px solid blue;
+        width: 100%;
+        float: left;
+      }
+
+      section div {
+        margin: 5px;
+        width: 50px;
+        height: 150px;
+      }
+
+      .left {
+        float: left;
+        background: pink;
+      }
+
+      .right {
+        float: right;
+        background: cyan;
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <div class="left">1</div>
+      <div class="left">2</div>
+      <div class="right">3</div>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tristique sapien ac erat
+        tincidunt, sit amet dignissim lectus vulputate. Donec id iaculis velit. Aliquam vel
+        malesuada erat. Praesent non magna ac massa aliquet tincidunt vel in massa. Phasellus
+        feugiat est vel leo finibus congue.
+      </p>
+    </section>
+
+    <h1>Float Example</h1>
+    <div class="box">
+      <img
+        src="https://picsum.photos/200/200?random=1"
+        alt="Placeholder Image"
+        class="float-left"
+      />
+
+      <p>
+        This is an example of using the float property in CSS. The image is floated to the left,
+        allowing the text to wrap around it. This technique is commonly used in web design to create
+        visually appealing layouts.This is an example of using the float property in CSS. The image
+        is floated to the left, allowing the text to wrap around it. This technique is commonly used
+        in web design to create visually appealing layouts.
+      </p>
+
+      <img
+        src="https://picsum.photos/200/200?random=2"
+        alt="Placeholder Image"
+        class="float-right"
+      />
+
+      <p>
+        By using float, you can position elements side by side and control the flow of content on
+        your webpage. Remember to clear floats if necessary to avoid layout issues.This is an
+        example of using the float property in CSS. The image is floated to the left, allowing the
+        text to wrap around it. This technique is commonly used in web design to create visually
+        appealing layouts.
+      </p>
+
+      <img src="https://picsum.photos/500/200?random=3" alt="Placeholder Image" class="clear" />
+
+      <p>
+        By using float, you can position elements side by side and control the flow of content on
+        your webpage. Remember to clear floats if necessary to avoid layout issuesThis is an example
+        of using the float property in CSS. The image is floated to the left, allowing the text to
+        wrap around it. This technique is commonly used in web design to create visually appealing
+        layouts..
+      </p>
+    </div>
+
+ 
+  </body>
+</html>

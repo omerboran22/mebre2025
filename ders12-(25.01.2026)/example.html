@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Position Example</title>
+  <style>
+    html{
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .sticky {
+      position: sticky;
+      top: 0px;
+      z-index: 1000;
+    }
+
+    .box-shadow-lg {
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    header {
+      background: #333;
+      color: #fff;
+      padding-top: 30px;
+      min-height: 70px;
+      border-bottom: 3px solid #0056b3;
+    }
+
+    header a {
+      color: #fff;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-size: 16px;
+    }
+
+    header ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    header li {
+      float: left;
+      /* Menü elemanlarını yan yana dizer */
+      display: inline;
+      padding: 0 20px;
+    }
+
+    header #branding {
+      float: left;
+    }
+
+    header nav {
+      float: right;
+      margin-top: 10px;
+    }
+    .click-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #0056b3;
+      color: #fff;
+      padding: 10px 15px;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+  <div id="branding"></div>
+  <header class="sticky box-shadow-lg">
+    <div class="container">
+      <div id="branding">
+        <h1><span style="color:#0056b3">Tekno</span>Lise</h1>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#">Anasayfa</a></li>
+          <li><a href="#">Dersler</a></li>
+          <li><a href="#">İletişim</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section >
+    <img src="https://picsum.photos/1200/1200?random=1" alt="">
+    <img src="https://picsum.photos/1200/1200?random=2" alt="">
+    <img src="https://picsum.photos/1200/1200?random=3" alt="">
+    <img src="https://picsum.photos/1200/1200?random=4" alt="">
+  </section>
+
+  <a href="#branding" class="click-to-top">
+     Click To Top <i class="fas fa-arrow-up"></i>
+  </a>
+</body>
+
+</html>

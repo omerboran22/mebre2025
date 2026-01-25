@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box{
+      width: 400px;
+      height: 300px;
+      border: 2px solid black;
+      display: inline-block;
+      margin: 5px;
+    }
+    .bg-green{
+      background-color: green;
+    }
+    .bg-image{
+      background-image: url('https://picsum.photos/800/800?random=1');
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+    .bg-green-500{
+      background-color: rgba(34, 197, 94, .5);
+    }
+
+    .bg-gradient{
+      background: linear-gradient(130deg, red, #ffff00, rgba(0, 0, 255, 0.5), rgba(0, 255, 0, 0.5) );
+    }
+    .bg-gradient-radial{
+      background: radial-gradient(circle, red, yellow, green, blue);
+    }
+    .btn{
+      padding: 10px 20px;
+      font-size: 16px;
+      color: white;
+      background-color: #007bff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .btn-gradient{
+      background: linear-gradient(45deg, #ff0000, #00ff00);
+    }
+    .btn-gradient:hover{
+      background: linear-gradient(45deg, #0000ff, #00ff00);
+    }
+  </style>
+</head>
+<body>
+  <div class="box bg-green"></div>
+  <div class="box bg-image"></div>
+  <div class="box bg-green-500"></div>
+  <div class="box bg-gradient"></div>
+  <div class="box bg-gradient-radial"></div>
+  <button class="btn btn-gradient">Click Me
+  </button>
+</body>
+</html>

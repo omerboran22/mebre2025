@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Position 2</title>
+  <style>
+    .box {
+      width: 200px;
+      height: 500px;
+      border: 2px solid black;
+      position: relative;
+    }
+    .fixed {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+      position: fixed;
+      top: 20px;
+      right: 20px;
+    }
+    .sticky {
+      width: 100px;
+      height: 100px;
+      background-color: lightgreen;
+      position: sticky;
+      top: 10px;
+      left: 40px;
+    }
+    section {
+      height: 1500px;
+      background-color: lightgray;
+    }
+    .box-shadow-lg{
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 1), 0 1px 3px rgba(0, 0, 0, 0.9);
+    }
+    .box-2{
+      width: 400px;
+      height: 300px;
+      border: 2px solid black;
+      position: relative;
+      margin-top: 50px;
+    }
+    .inline-box{
+      width: 100px;
+      height: 50px;
+    }
+    .inline-box-2{
+      width: 200px;
+      height: 100px;
+    }
+    .absolute{
+      position: absolute;
+    }
+
+    .top-10{
+      top: 10px;
+    }
+    .left-10{
+      left: 10px;
+    }
+    .top-20{
+      top: 20px;
+    }
+    .left-20{
+      left: 20px;
+    }
+    .bg-image{
+      background:url('https://picsum.photos/400/400') no-repeat center center;
+      background-size: cover;
+    }
+    .bg-title{
+      border: 2px solid blue;
+      background-color: rgba(0, 0, 0, 0.3);
+      border-radius: 20px;
+      color: white;
+    }
+    .z-10{
+      z-index: 10;
+    }
+    .z-20{
+      z-index: 20;
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="fixed box-shadow-lg"></div>
+  <div class="box">
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic aut autem repudiandae incidunt quasi, corrupti beatae saepe? Libero minima impedit exercitationem numquam, perspiciatis corrupti harum natus optio corporis illum! Recusandae?
+    </p>
+    <div class="sticky box-shadow-lg"></div>
+  </div>
+
+  <div class="box-2">
+    <div class="absolute bg-image inline-box-2 z-10 top-10 left-10"></div>
+    <div class="absolute bg-title inline-box  z-20 top-20 left-20">
+      <p>
+        Rastgele Metin
+      </p>
+    </div>
+  </div>
+
+  
+</body>
+</html>

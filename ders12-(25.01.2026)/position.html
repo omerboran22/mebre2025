@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
       font-family: Arial, sans-serif;
       margin: 20px;
     }
+
     .relative {
       position: relative;
       width: 300px;
@@ -16,55 +18,55 @@
       background-color: lightblue;
       margin-top: 20px;
     }
+
     .absolute {
       position: absolute;
       top: 50px;
       right: 50px;
     }
+
     .absolute-2 {
       position: absolute;
       top: 20px;
       left: 20px;
       border-color: blue;
     }
+
     .box {
       width: 100px;
       height: 100px;
       border: 2px solid orange;
     }
-
-    .absolute-example{
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      bottom: 10px;
-      right: 10px;
-      width: 100px;
-      height: 100px;
-      background-color: red;
-    }
   </style>
 </head>
+
 <body>
-  
-  <h1>Positioning in CSS</h1>
-  <p>CSS positioning allows you to control the layout of elements on a webpage. There are several types of positioning:</p>
+
+  <h1>CSS'de Konumlandırma</h1>
+  <p>CSS konumlandırma, bir web sayfasındaki öğelerin yerleşimini kontrol etmenizi sağlar. Birkaç farklı konumlandırma
+    türü vardır:</p>
   <ul>
-    <li><strong>Static:</strong> The default positioning for all elements. Elements are positioned according to the normal flow of the document.</li>
-    <li><strong>Relative:</strong> The element is positioned relative to its normal position. You can use the top, right, bottom, and left properties to adjust its position.</li>
-    <li><strong>Absolute:</strong> The element is positioned relative to its nearest positioned ancestor (not static). If there is no such ancestor, it uses the document body.</li>
-    <li><strong>Fixed:</strong> The element is positioned relative to the viewport, meaning it stays in the same place even when the page is scrolled.</li>
-    <li><strong>Sticky:</strong> The element toggles between relative and fixed, depending on the scroll position. It behaves like relative until a certain scroll point is reached, then it behaves like fixed.</li>
+    <li><strong>Statik:</strong> Tüm öğeler için varsayılan konumlandırmadır. Öğeler, belgenin normal akışına göre
+      yerleştirilir.</li>
+    <li><strong>Relative:</strong> Öğenin konumu, normal konumuna göre ayarlanır. Top, right, bottom ve left
+      özellikleriyle yeri değiştirilebilir.</li>
+    <li><strong>Absolute:</strong> Öğenin konumu, en yakın konumlandırılmış (statik olmayan) üst öğesine göre
+      ayarlanır. Eğer böyle bir üst öğe yoksa, belge gövdesine göre konumlandırılır.</li>
+    <li><strong>Fixed:</strong> Öğenin konumu, görüntüleme alanına (viewport) göre ayarlanır ve sayfa kaydırılsa
+      bile aynı yerde kalır.</li>
+    <li><strong>Sticky:</strong> Öğenin konumu, kaydırma konumuna bağlı olarak göreceli ve sabit arasında
+      değişir. Belirli bir kaydırma noktasına kadar göreceli davranır, sonra sabit olur.</li>
   </ul>
 
   <h2>Example of Relative Positioning</h2>
   <section class="relative">
-    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellendus deleniti tenetur voluptatum enim. Aperiam culpa perspiciatis autem repellat temporibus. Eaque earum veniam similique, perspiciatis explicabo facilis vel magnam aperiam autem?
+    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellendus deleniti tenetur voluptatum enim. Aperiam
+    culpa perspiciatis autem repellat temporibus. Eaque earum veniam similique, perspiciatis explicabo facilis vel
+    magnam aperiam autem?
     <div class="box absolute"></div>
     <div class="box absolute-2"></div>
   </section>
 
-  <div class="absolute-example"></div>
-
 </body>
+
 </html>

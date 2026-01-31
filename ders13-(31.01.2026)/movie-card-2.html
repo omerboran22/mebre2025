@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deadpool</title>
+  <style>
+    @import url(https://fonts.googleapis.com/css?family=Lato:400,300,700);
+    @import url(https://fonts.googleapis.com/css?family=Rubik:400,900);
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      padding: 10%;
+    }
+    .card {
+      padding: 0;
+      position: relative;
+      width: 600px;
+      height: 300px;
+      background: url('http://riccardotartaglia.it/img/deadpool/back.jpg');
+      background-position: center;
+      background-size: cover;
+      box-shadow: 0px 45px 100px rgba(0, 0, 0, .4),inset 0 0 0 1000px rgba(156,27,27,.6);
+    }
+    .card-content{
+      display: inline-block;
+      width: 65%;
+      height: 100%;
+      color: white;
+      padding: 25px;
+    }
+    .card .title {
+      font-family: 'Rubik', sans-serif;
+      font-size: 32px;
+      margin: 0;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+    .card .title span {
+      font-size: 18px;
+      font-weight: 600;
+      vertical-align: top;
+    }
+    .card .category {
+      font-family: 'Rubik', sans-serif;
+      font-size: 14px;
+      margin: 10px 0;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin: 0;
+    }
+    .card .description {
+      font-family: 'Lato', sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      margin-top: 15px;
+      font-weight: 300;
+    }
+    .card button{
+      border: 3px solid white;
+      background: transparent;
+      color: inherit;
+      padding: 5px;
+      font-size: 20px;
+      font-family: 'Lato', sans-serif;
+      font-weight: 700;
+    }
+    .card-image {
+      display: inline-block;
+      width: 35%;
+      position: absolute;
+      right: -10px;
+      bottom: -2px;
+    }
+    .card-image img {
+      height: 350px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="card">
+    <div class="card-content">
+      <h2 class="title">
+        Deadpool <span>(2016)</span>
+      </h2>
+      <div class="category">
+        <span> Action,Adventure,Sci-Fi</span>
+      </div>
+      <p class="description">
+        Deadpool is a 2016 American superhero film based on the Marvel Comics character of the same name. It is the
+        eighth installment of the X-Men film series, and is directed by Tim Miller.
+      </p>
+      <button>Watch Trailer</button>
+    </div>
+    <div class="card-image">
+      <img src="https://riccardotartaglia.it/img/deadpool/deadpool.png" alt="Deadpool Movie Poster">
+    </div>
+  </div>
+
+</body>
+
+</html>

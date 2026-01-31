@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Card 1</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      margin: 0;
+      padding: 20px;
+    }
+    .card{
+      width: 800px;
+      height: 400px;
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 0;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      position: relative;
+      overflow: hidden;
+    }
+    .card-image {
+      position: relative;
+      width: 30%;
+      height: 100%;
+      display: inline-block;
+      overflow: hidden;
+    }
+    .card-path-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      clip-path: polygon(0% 0%, 80% 0%, 65% 100%, 0% 100%);
+      position: relative;
+    }
+    .card-path-image::before{
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.7);
+    }
+    .poster-image {
+      position: absolute;
+      top: 10%;
+      left: 25%;
+      width: 70%;
+      height: auto;
+      object-fit: cover;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      border-radius: 5px;
+    }
+    .search-input {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      width: 100px;
+    }
+    .card-content {
+      padding: 20px;
+      width: 60%;
+      display: inline-block;
+      vertical-align: top;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <input class="search-input" type="text" name="search-movie" placeholder="Search movie...">
+    <div class="card-image">
+      <div class="card-path-image">
+        <img src="https://picsum.photos/800/800?random=1" alt="" >
+      </div>
+      <img src="https://picsum.photos/400/600?random=1" alt="" class="poster-image">
+    </div>
+    <div class="card-content">
+      <h2>Dead Poets Society</h2>
+      <div class="category">
+        <span>PG</span>
+        <span>1989</span>
+        <span>Comedy, Drama</span>
+      </div>
+      <p>Dead Poets Society is a 1989 American coming-of-age drama film directed by Peter Weir, starring Robin Williams as an English teacher who inspires his students through poetry.</p>
+      <p>
+        <strong>Written by:</strong>
+        <span>Tom Schulman</span>
+      </p>
+      <p>
+        <strong>Directed by:</strong>
+        <span>Peter Weir</span>
+      </p>
+      <p>
+        <strong>Starring:</strong><br>
+        <span>Robin WilliamsRobert Sean LeonardEthan Hawke</span>
+      </p>
+    </div>
+  </div>
+  
+</body>
+</html>

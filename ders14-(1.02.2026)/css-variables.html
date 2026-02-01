@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Variables</title>
+  <style>
+    :root{
+      --color-primary: #3498db;
+      --color-secondary: #0b381e;
+      --color-success: #27ae60;
+      --color-danger: #e74c3c;
+      --font-family: 'Arial, sans-serif';
+      --font-size-base: 16px;
+    }
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: var(--font-family);
+      font-size: var(--font-size-base);
+      background-color: var(--color-primary);
+      color: white;
+    }
+    h1 {
+      color: var(--color-secondary);
+    }
+    p {
+      color: var(--color-secondary);
+    }
+    p{
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <h1>Welcome to CSS Variables</h1>
+  <p>This page demonstrates the use of CSS variables (custom properties) for consistent styling.</p>
+  
+</body>
+</html>

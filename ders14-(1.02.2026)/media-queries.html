@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Media</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      padding: 0px;
+      margin: 0px;
+    }
+    body {
+      font-family: Arial, sans-serif;
+
+    }
+    nav {
+      width: 100%;
+      background-color: #333;
+      color: white;
+    }
+    nav h2 {
+      padding: 10px 20px;
+      display: inline-block;
+    }
+    nav ul {
+      list-style-type: none;
+      display: inline-block;
+    }
+    nav ul li {
+      display: inline-block;
+      margin-right: 15px;
+    }
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      padding: 10px 15px;
+      display: inline-block;
+    }
+    nav ul li a:hover {
+      background-color: #575757;
+      border-radius: 4px;
+    }
+    button {
+      background-color: #333;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    nav button[data-type="menu"] {
+      float: left;
+      margin: 10px 20px;
+      display: none;
+    }
+    nav button[data-type="login"  ] {
+      float: right;
+      margin: 10px 20px;
+      padding: 10px 15px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    @media (max-width: 700px) {
+      nav ul {
+        display: none;
+      }
+      nav button[data-type="menu"] {
+        display: inline-block;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+  <nav>
+    <button data-type="menu">
+      Menu
+    </button>
+    <h2>Logo</h2>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="media-queries.html">Media Queries</a></li>
+      <li><a href="flexbox.html">Flexbox</a></li>
+      <li><a href="grid.html">Grid</a></li>
+    </ul>
+    <button data-type="login">
+      login
+    </button>
+  </nav>
+
+
+
+</body>
+
+</html>

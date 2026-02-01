@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Attr Selectors</title>
+  <style>
+    div 
+    .class name
+    #id name
+
+    /* Attribute Selectors 
+      [attr]
+      [attr=value]
+      [attr~=value]
+      [attr|=value]
+      [attr^=value]
+      [attr$=value]
+      [attr*=value]
+    */
+
+    input[data-selected="true"]:focus {
+      outline: none;
+      box-shadow: 0 0 5px green;
+      border: 2px solid green;
+    }
+    input[data-selected="false"]:focus {
+      outline: none;
+      box-shadow: 0 0 5px red;
+      border: 2px solid red;
+    }
+
+    [name*="name"] {
+      background-color: red;
+    }
+    a[href^="http"] {
+      display: inline-block;
+      text-decoration: none;
+      padding: 10px 15px;
+      background-color: orange;
+      color: white;
+      border-radius: 5px;
+    }
+    a[href^="tel"] {
+      display: inline-block;
+      text-decoration: none;
+      padding: 10px 15px;
+      background-color: green;
+      color: white;
+      border-radius: 5px;
+    }
+    div[class^="always"] {
+      border: 2px solid blue;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+    div[class$="end"] {
+      font-size: 30px;
+      font-weight: bold;
+    }
+
+    [class~="box"]{
+      border: 5px solid black;
+      background-color: lightgray;
+    }
+    [class|="w"] {
+      color: blue;
+      font-size: 20px;
+    }
+    img[src$=".png"] {
+      border: 5px solid green;
+    }
+
+    /* attr selectors tablosu (özellik seçiciler)
+      [attr] -> özelliğe sahip olanlar
+      [attr=value] -> özelliği tam olarak bu değere sahip olanlar
+      [attr~=value] -> özelliğinde boşlukla ayrılmış değerler arasında bu değere sahip olanlar
+      [attr|=value] -> özelliği bu değerle başlayan veya "değer-" ile başlayanlar
+      [attr^=value] -> özelliği bu değerle başlayanlar
+      [attr$=value] -> özelliği bu değerle bitenler
+      [attr*=value] -> özelliğinde bu değeri içerenler
+    */
+    
+  </style>
+</head>
+<body>
+  <div class="w-full">
+    This is a container div
+  </div>
+
+  <div class="this-is-the-end">
+    This is the end div
+  </div>
+  
+  <div class="always visible">
+    always visible div
+  </div>
+
+  <section>
+    <div class="w-full box text-center h-40">
+      This is a box div
+    </div>
+  </section>
+
+  <input type="text" name="firstname" id="" data-selected="false" >
+  <input type="text" name="lastname">
+  <input type="text" name="age">
+
+  <a href="https://www.mebre.com.tr/">
+    Mebre Link
+  </a>
+
+  <a href="tel:+905392134059">
+    Call Me
+  </a>
+
+  <img src="test.jpg" alt="">
+  <img src="test.png" alt="">
+
+
+</body>
+</html>

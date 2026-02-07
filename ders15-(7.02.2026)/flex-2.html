@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flex Nedir 2</title>
+  <style>
+    .container {
+      display: flex;
+      justify-content: space-evenly;
+      align-items:  center;
+      background-color: gray;
+      height: 300px;
+      gap: 5px;
+    }
+    .container div {
+      width: 100px;
+      background-color: blue;
+      min-height: 100px;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 50px;
+      margin-right: 50px;
+    }
+    .container div:nth-child(1) {
+      order: 0;
+      flex-grow: 1;
+    }
+    .container div:nth-child(2) {
+      order: 1;
+    }
+    .container div:nth-child(3) {
+      order: 2;
+    }
+    .container div:nth-child(4) {
+      order: 3;
+      flex: 1 0 250px;
+    }
+    .container div:nth-child(5) {
+      order: 4;
+      flex-basis: 250px;
+      flex-shrink: 1;
+    }
+  </style>
+</head>
+<body>
+  <section class="container">
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <div>5</div>
+  </section>
+
+  
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flex Nedir</title>
+  <style>
+    section {
+      display: flex;
+      /* flex-direction: row; */
+      flex-wrap: wrap;
+    }
+    section div {
+      width: 300px;
+      height: 300px;
+      background-color: red;
+      margin: 5px;
+      font-size: 100px;
+      color: white;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+    .container {
+      display: flex;
+      justify-content: space-evenly;
+      align-items:  center;
+      background-color: gray;
+      height: 300px;
+    }
+    .container div {
+      width: 100px;
+      background-color: blue;
+      margin: 5px;
+      min-height: 100px;
+    }
+    .container div:nth-child(2) {
+      align-self: flex-start;
+      height: 150px;
+    }
+     .container div:nth-child(3) {
+      align-self: flex-end;
+      height: 200px;
+    }
+
+    .container-2 {
+      display: flex;
+      height: 500px;
+      background-color: gray;
+      margin-top: 25px;
+      flex-wrap: wrap;
+      align-content: space-evenly;
+    }
+    .container-2 div {
+      width: 150px;
+      min-height: 150px;
+      background-color: blue;
+      margin: 5px;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 75px;
+      border: 5px solid black;
+      border-radius: 25px;
+    }
+  </style>
+</head>
+<body>
+  <section>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+  </section>
+
+  <div class="container">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+
+  <div class="container-2">
+      <div>1</div>
+      <div>2</div>
+      <div>3</div>
+      <div>4</div>
+      <div>5</div>
+      <div>6</div>
+      <div>7</div>
+      <div>8</div>
+      <div>9</div>
+      <div>10</div>
+      <div>11</div>
+      <div>12</div>
+  </div>
+  
+</body>
+</html>

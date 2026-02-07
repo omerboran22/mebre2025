@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grid Nedir</title>
+  <style>
+    .container {
+      display: grid;
+      gap: 10px;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(3, 150px);
+    }
+    .container div {
+      background-color: lightblue;
+      min-height: 100px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 50px;
+    }
+    .container div:nth-child(1) {
+      grid-column: 1 / span 4;
+      grid-row: 1 / span 3;
+    }
+
+    .parent {
+      background-color: lightgray;
+      display: grid;
+      height: 95vh;
+      gap: 5px;
+      grid-template-columns: repeat(5, 1fr);
+      grid-template-rows: repeat(5, 1fr);
+      grid-column-gap: 0px;
+      grid-row-gap: 0px;
+    }
+    .parent div {
+      background-color: lightblue;
+      border: 1px solid black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 50px;
+    }
+    /* row-start / column-start / row-end / column-end */
+    .div1 { grid-area: 1 / 1 / 4 / 3; }
+    .div2 { grid-area: 1 / 3 / 4 / 5; }
+    .div3 { grid-area: 4 / 1 / 5 / 3; }
+    .div4 { grid-area: 5 / 1 / 6 / 3; }
+    .div5 { grid-area: 4 / 3 / 6 / 5; }
+    .div6 { grid-area: 1 / 5 / 6 / 6; }
+
+    .layout {
+      display: grid;
+      grid-template-areas:
+        "header header header"
+        "sidebar content content"
+        "footer footer footer";
+      grid-template-columns: 200px 1fr 1fr;
+      grid-template-rows: 100px 1fr 100px;
+      width: 100%;
+      height: 100vh;
+    }
+    .layout > * {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 35px;
+      color: #fff;
+      text-transform: uppercase;
+    }
+    .header {
+      grid-area: header;
+      background-color: lightcoral;
+    }
+    .sidebar {
+      grid-area: sidebar;
+      background-color: lightblue;
+    }
+    .content {
+      grid-area: content;
+      background-color: lightgreen;
+    }
+    .footer {
+      grid-area: footer;
+      background-color: lightgray;
+    }
+
+
+  </style>
+</head>
+<body>
+
+  <div class="layout">
+    <header class="header">header</header>
+    <div class="sidebar">sidebar</div>
+    <main class="content">content</main>
+    <footer class="footer">footer</footer>
+  </div>
+
+  <div class="parent">
+    <div class="div1"> </div>
+    <div class="div2"> </div>
+    <div class="div3"> </div>
+    <div class="div4"> </div>
+    <div class="div5"> </div>
+    <div class="div6"> </div>
+  </div>
+  
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Example</title>
+  <style>
+    .container {
+      display: grid;
+      gap: 10px;
+      /*
+        30px
+        40px
+        20px
+        */
+      grid-template-columns: repeat(15, 1fr);
+    }
+    .col-6 {
+      grid-column: span 6;
+    }
+    .col-4 {
+      grid-column: span 4;
+    }
+    .col-2 {
+      grid-column: span 2;
+    }
+    .col-3 {
+      grid-column: span 3;
+    }
+
+   .container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+   }
+  </style>
+</head>
+<body>
+  <h1>Bu bir örnek sayfadır</h1>
+  <p>Bu sayfa, CSS Grid ve Flexbox özelliklerini göstermek için hazırlanmıştır.</p>
+  <p>Aşağıda, farklı düzenlerde kutular bulunmaktadır:</p>
+
+  <div class="container">
+    <img class="col-4" src="https://picsum.photos/400/400" alt="">
+    <img class="col-3" src="https://picsum.photos/300/400" alt="">
+    <img class="col-6" src="https://picsum.photos/600/400" alt="">
+    <img class="col-2" src="https://picsum.photos/200/400" alt="">
+  </div>
+
+  
+</body>
+</html>

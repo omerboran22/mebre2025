@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transaction</title>
+  <style>
+    .box{
+      width: 100px;
+      height: 100px;
+      background-color: blue;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      /* transition: all 0.5s ease ; */
+      transition-duration: 2500ms;
+      transition-property: background-color, height;
+      transition-timing-function: ease;
+    }
+    .box:hover{
+      background-color: red;
+      cursor: pointer;
+      width: 200px;
+      height: 200px;
+      font-size: 32px;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <span>Hello</span>
+  </div>
+  
+</body>
+</html>

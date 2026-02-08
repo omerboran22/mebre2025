@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      line-height: 1.6;
+    }
+    form {
+      max-width: 300px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    input {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <form >
+    <h2>Giriş Yap</h2>
+    <input type="text" name="username" placeholder="Kullanıcı Adı" required>
+    <input type="password" name="password" placeholder="Şifre" required>
+    <button type="submit">Giriş Yap</button>
+    <div id="message"></div>
+  </form>
+
+
+  <script>
+    const form = document.querySelector('form');
+    const messageDiv = document.getElementById('message');
+
+    const auth={
+      username:'admin',
+      password:'password'
+    }
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault(); // Formun varsayılan gönderimini engelle
+
+      const username = form.username.value;
+      const password = form.password.value;
+
+      // Basit bir doğrulama (gerçek uygulamalarda bu şekilde yapılmaz)
+      if (username === auth.username && password === auth.password) {
+        messageDiv.textContent = 'Giriş başarılı!';
+        messageDiv.style.color = 'green';
+      } else {
+        messageDiv.textContent = 'Kullanıcı adı veya şifre yanlış!';
+        messageDiv.style.color = 'red';
+      }
+    });
+  </script>
+  
+</body>
+</html>

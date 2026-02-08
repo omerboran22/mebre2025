@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transform</title>
+  <style>
+    body{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    .box{
+      width: 100px;
+      height: 100px;
+      background-color: blue;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.5s ease ;
+    }
+    .box:hover{
+      /* transform nedir? */
+      /* 
+        translate(x,y)
+        rotate(deg)
+        scale(x,y)
+        skew(x,y)
+      */
+      
+      /* transform: rotate(45deg); */
+      /* transform: translate(10px, -10px); */
+      transform: skew(-15deg) scale(1.2);
+    }
+    .btn{
+      margin-top: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .btn-primary{
+      background-color: #007bff;
+    }
+    .btn-secondary{
+      background-color: #6c757d;
+    }
+    .btn-success{
+      background-color: #28a745;
+    }
+    .btn:hover{
+      transform: scale(1.4);
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <span>Hello</span>
+  </div>
+  <button class="btn btn-primary">Click Me</button>
+  <button class="btn btn-secondary">Click Me</button>
+  <button class="btn btn-success">Click Me</button>
+  
+</body>
+</html>

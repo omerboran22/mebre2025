@@ -20,11 +20,36 @@
       border-radius: 5px;
       background-color: #fff;
     }
+    .test{
+      width: 100px;
+      height: 100px;
+      border: 2px solid #000;
+    }
+    .test[data-hovered="true"] {
+      background-color: yellow;
+    }
+    .test[data-hovered="false"] {
+      background-color: red;
+    }
   </style>
 </head>
 <body>
+  <div class="test"></div>
   <input type="text" id="input" placeholder="Bir şeyler yazın..." />
   <div id="output"></div>
+
+  <script>
+    let isActive = false;
+    const test = document.querySelector('.test');
+    test.addEventListener('mouseover', () => {
+      isActive = true;
+      test.setAttribute('data-hovered', isActive);
+    });
+    test.addEventListener('mouseout', () => {
+      isActive = false;
+      test.setAttribute('data-hovered', isActive);
+    });
+  </script>
 
   <script src="./script.js"></script>
 </body>

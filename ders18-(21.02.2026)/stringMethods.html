@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stringler nedir</title>
+</head>
+<body>
+
+  <script>
+    // Stringler nedir
+    // Stringler, metin verilerini temsil eden veri türüdür. JavaScript'te stringler, tek tırnak (' '), çift tırnak (" ") veya geri tırnak (` `) kullanılarak oluşturulabilir.
+
+    // Örnekler:
+    let str1 = 'Merhaba Dünya';
+    let str2 = "    JavaScript öğreniyorum                   ";
+    let str3 = `BUGÜN HAVA ÇOK GÜZEL`;
+    let str4 = 'JavaScript\'te stringler çok kullanışlıdır.'; // Kaçış karakteri kullanarak tek tırnak ekleme
+    let str5 = "cok fazla tekrar eden cok fazla metin"
+    const stringObj = new String("foo");
+    String.prototype.customMethod = function() {
+      return "Bu bir custom method: " + this.toString();
+    };
+
+    console.log(stringObj);
+    // Expected output: String { "foo" }
+
+    console.log(stringObj.toString());
+
+    console.log(str1); // Merhaba Dünya
+    console.log(str2); // JavaScript öğreniyorum
+    console.log(str3); // BUGÜN HAVA ÇOK GÜZEL
+
+    console.log(str1.length); // 14
+    console.log(str2.toUpperCase()); // JAVASCRIPT ÖĞRENİYORUM
+    console.log(str3.toLowerCase()); // bugün hava çok güzel
+    console.log(str1.indexOf('Dünya')); // 8
+    console.log(str2.slice(0, 10)); // JavaScript
+    console.log('substring:'+str3.substring(5,23)); // BUGÜN
+    console.log('substr:'+str3.substr(5,18)); // BUGÜN HAVA ÇOK GÜZEL
+    console.log(str5.replace('cok', 'çok')); // BUGÜN HAVA ÇOK HARİKA
+    console.log(str5.replaceAll('cok', 'çok')); // çok fazla tekrar eden çok fazla metin
+    console.log(str1.split(' ')); // ['Merhaba', 'Dünya']
+    console.log(str2.includes('öğreniyor')); // true
+    console.log(str3.startsWith('BUGÜN')); // true
+    console.log(str1.endsWith('Dünya')); // true
+    console.log(str2.trim()); // JavaScript öğreniyorum (başında ve sonunda boşluk yok)
+    console.log(str3.repeat(2)); // BUGÜN HAVA ÇOK GÜZELBUGÜN HAVA ÇOK GÜZEL
+    console.log(str1.charAt(5)); // b
+    console.log(str2.charCodeAt(0)); // 32 (boşluk karakterinin ASCII kodu)
+    console.log(str3.concat(' ve harika bir gün')); // BUGÜN HAVA ÇOK GÜZEL ve harika bir gün
+    console.log(str1.toString()); // "Merhaba Dünya"
+    console.log(str1.split(' ').toString()); // "Merhaba,Dünya"
+    console.log(str2.customMethod()); // "Bu bir custom method"
+    
+  </script>
+</body>
+</html>

@@ -4,7 +4,6 @@
 var a = 5;// var ile tanimlanan degiskenler global scope'a sahiptir ve yeniden tanimlanabilir.
 let b = 10; // let ile tanimlanan degiskenler block scope'a sahiptir ve yeniden tanimlanabilir.
 const c = 15; // const ile tanimlanan degiskenler block scope'a sahiptir ve yeniden tanimlanamaz.
-
 // Degisken tipleri
 // Primitive tipler: number, string, boolean, null, undefined, symbol
 // Reference tipler: object, array, function
@@ -13,7 +12,6 @@ const c = 15; // const ile tanimlanan degiskenler block scope'a sahiptir ve yeni
 var name = "John Doe";
 let city = 'New York';
 const country = `${name} lives in USA, ${city}`; // template literals
-
 console.log(country); // John Doe lives in USA, New York
 
 // number tipinde degiskenler
@@ -38,7 +36,13 @@ console.log(`Empty value: ${emptyValue}, Undefined value: ${undefinedValue}`); /
 let user = {
   name: "Alice",
   age: 30,
-  city: "Los Angeles"
+  city: "Los Angeles",
+  identity: {
+    id: "12345",
+    type: "passport"
+  },
+  hobbies: ["reading", "traveling", "cooking"],
+  isActive: true
 };
 console.log(user); // { name: 'Alice', age: 30, city: 'Los Angeles' }
 

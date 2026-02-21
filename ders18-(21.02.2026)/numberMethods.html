@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Number Methods</title>
+</head>
+<body>
+
+  <script>
+    // Number Methods
+    // JavaScript'te sayılar için birçok yerleşik yöntem bulunmaktadır. Bu yöntemler, sayılar üzerinde çeşitli işlemler yapmanıza olanak tanır.
+
+    let num1 = 42;
+    let num2 = 3.141234567890;
+    let num3 = -7;
+    let num4 = 252543.234;
+
+    console.log(num1.toString()); // "42"
+    console.log('number 2:----'+num2.toFixed(2)); // "3.14"
+    console.log(Number.isInteger(num1)); // true
+    console.log(Number.isInteger(num2)); // false
+    console.log('Number is nan check:'+ Number.isNaN('25'*'abc')); // true not a number
+    console.log(Number.parseInt("123abc")); // 123
+    console.log(Number.parseFloat("3.14abc")); // 3.14
+    console.log(num4.toLocaleString('en-us')); // "252,543.234"
+    console.log(num4.toLocaleString('tr')); // "252.543,234"
+
+    const numbers = [10, 20, 5, 15];
+    // Math Methods
+    // JavaScript'te Math nesnesi, matematiksel işlemler için birçok yerleşik yöntem sağlar.
+    console.log("Math Round:"+Math.round(3.5)); // 4
+    console.log("Math Floor:"+Math.floor(3.7)); // 3
+    console.log("Math Ceil:"+Math.ceil(3.1)); // 4
+    console.log("Math Max:"+Math.max(...numbers)); // 20
+    console.log("Math Min:"+Math.min(...numbers)); // 5
+    console.log("Math Random:"+Math.floor(Math.random()*100)); // 0 ile 1 arasında rastgele bir sayı
+    
+  </script>
+  
+</body>
+</html>

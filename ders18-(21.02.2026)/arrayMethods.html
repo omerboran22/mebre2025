@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Array Methods</title>
+</head>
+<body>
+
+  <script>
+    const numbers = [1, 2, 3, 4, 5];
+    console.log("Original Array:", numbers);
+
+    // forEach
+    console.log("Using forEach:");
+    numbers.forEach((num, index) => {
+      console.log(`Index: ${index}, Value: ${num}`);
+    });
+
+    // map
+    const squared = numbers.map((num) => num * num);
+    console.log("Squared Array:", squared);
+
+    // filter
+    const evenNumbers = numbers.filter((num) => num % 2 === 0);
+    console.log("Even Numbers:", evenNumbers);
+
+    // reduce
+    const sum = numbers.reduce((acc, num) => acc + num, 0);
+    console.log("Sum of Numbers:", sum);
+
+    // find
+    const firstEven = numbers.find((num) => num % 2 === 0);
+    console.log("First Even Number:", firstEven);
+
+    // some
+    const hasEven = numbers.some((num) => num % 2 === 0);
+    console.log("Contains Even Number:", hasEven);
+
+    // every
+    const allPositive = numbers.every((num) => num > 0);
+    console.log("All Numbers Positive:", allPositive);
+
+    const fruits = ["apple", "banana", "cherry"];
+    if (fruits.includes("banana")) {
+      console.log("Banana is in the array.");
+    } else {
+      console.log("Banana is not in the array.");
+    }
+    fruits.push("strawberry");
+    console.log("Fruits after push:", fruits);
+    fruits.pop();
+    console.log("Fruits after pop:", fruits);
+    fruits.shift();
+    console.log("Fruits after shift:", fruits);
+    fruits.unshift("grape");
+    console.log("Fruits after unshift:", fruits);
+    const stringOfFruits = fruits.join("-merhaba-");
+    console.log("String of Fruits:", stringOfFruits);
+    const months = ["March", "Jan", "Feb", "Dec"];
+    months.sort();
+    console.log(months);
+    console.log('reverse numbers', numbers.reverse());
+
+    //indexof
+    const indexOfCherry = fruits.indexOf("cherry");
+    console.log("Index of Cherry:", indexOfCherry);
+
+    // slice
+    const slicedFruits = fruits.slice(1, 3);
+    console.log("Sliced Fruits:", slicedFruits);
+
+    //sort with custom comparator
+    const sortedNumbers = numbers.sort((a, b) => b - a);
+    console.log("Sorted Numbers:", sortedNumbers);
+
+    //object in array
+    const people = [
+      { name: "Alice", age: 30 },
+      { name: "Bob", age: 25 },
+      { name: "Charlie", age: 35 }
+    ];
+
+    const names = people.map((person) => person.name);
+    console.log("Names of People:", names);
+
+    const adults = people.filter((person) => person.age >= 30);
+    console.log("Adults:", adults);
+
+    const firstAdult = people.find((person) => person.age >= 30);
+    console.log("First Adult:", firstAdult);
+
+
+  </script>
+  
+</body>
+</html>

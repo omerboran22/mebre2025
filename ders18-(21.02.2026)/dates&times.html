@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Date and Time Methods</title>
+</head>
+<body>
+
+  <div id="dateDisplay"></div>
+  <script>
+    const now = new Date();
+    console.log("Current Date and Time:", now);
+    const dateDisplay = document.getElementById("dateDisplay");
+
+    const year = now.getFullYear();
+    const month = now.getMonth() + 1; // Months are zero-indexed
+    const day = now.getDate();
+    const hours = now.getHours();
+    const minutes = now.getMinutes();
+    const seconds = now.getSeconds();
+
+    setInterval(() => {
+      const now = new Date();
+      const year = now.getFullYear();
+      const month = now.getMonth() + 1;
+      const day = now.getDate();
+      const hours = now.getHours();
+      const minutes = now.getMinutes();
+      const seconds = now.getSeconds();
+      dateDisplay.textContent = `Current Date and Time: 
+      ${now.toLocaleDateString("tr-TR", { year: "numeric", month: "long", day: "2-digit", weekday: "long" })} -
+      ${hours}:${minutes}:${seconds}`;
+    }, 1000);
+
+
+    console.log(`Year: ${year}, Month: ${month}, Day: ${day}`);
+    console.log(`Time: ${hours}:${minutes}:${seconds}`);
+
+    const timestamp = now.getTime();
+    console.log("Timestamp (milliseconds since Jan 1, 1970):", timestamp);
+
+
+    const utcDate = new Date('2026-02-21T18:50:40.980Z'); // January 1, 2025 in UTC
+    console.log("UTC Date:", utcDate);
+
+    const isoString = now.toISOString();
+    console.log("ISO String:", isoString);
+
+    const specificDate = new Date(2025, 11, 25); // December 25, 2025
+    console.log("Specific Date:", specificDate);
+  </script>
+  
+</body>
+</html>

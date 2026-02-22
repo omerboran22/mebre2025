@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Basit Saat Uygulamasi</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .clock {
+      text-align: center;
+    }
+
+    #time {
+      font-size: 48px;
+      font-weight: bold;
+    }
+
+    #date {
+      font-size: 24px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="clock">
+    <div id="time">
+      <span id="hours"></span>
+      <span>:</span>
+      <span id="minutes"></span>
+      <span>:</span>
+      <span id="seconds"></span>
+    </div>
+    <div id="date">
+    </div>
+  </div>
+
+  <script>
+    const hoursElement = document.getElementById('hours');
+    const minutesElement = document.getElementById('minutes');
+    const secondsElement = document.getElementById('seconds');
+    const date = document.getElementById('date');
+
+
+    function updateClock() {
+      const now = new Date();
+      const hours = now.getHours().toString();
+      const minutes = now.getMinutes().toString();
+      const seconds = now.getSeconds().toString();
+
+      hoursElement.textContent = hours;
+      minutesElement.textContent = minutes;
+      secondsElement.textContent = seconds;
+      date.textContent = `
+      ${now.toLocaleDateString("tr-TR", { year: "numeric", month: "long", day: "2-digit", weekday: "long" })}`;
+    }
+
+    updateClock();
+    setInterval(updateClock, 1000);
+
+  </script>
+  
+</body>
+</html>

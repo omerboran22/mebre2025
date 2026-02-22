@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Example Page</title>
+</head>
+<body>
+
+  <script>
+    const ogrenciler=[
+      {ad:"Ali", soyad:"Yılmaz", yas:20
+        ,notlar:[
+          {ders:"Matematik", not:90},
+          {ders:"Fizik", not:85},
+          {ders:"Kimya", not:88}
+        ]
+      },
+      {ad:"Ayşe", soyad:"Demir", yas:22,
+        notlar:[
+          {ders:"Matematik", not:92},
+          {ders:"Fizik", not:80},
+          {ders:"Kimya", not:95}
+        ]
+      },
+      {ad:"Mehmet", soyad:"Kara", yas:19,notlar:[
+        {ders:"Matematik", not:85},
+        {ders:"Fizik", not:90},
+        {ders:"Kimya", not:78}
+      ]}
+    ];
+
+    const maxmatematiknotu=ogrenciler.find(ogr => {
+      const matematikNotu = ogr.notlar.find(n => n.ders === "Matematik");
+      return matematikNotu && matematikNotu.not === 92;
+    });
+    console.log(maxmatematiknotu.ad);
+
+
+    const dersOrtalamalari= ogrenciler.map(ogr => {
+      const toplamNot = ogr.notlar.reduce((toplam, n) => toplam + n.not, 0);
+      const ortalama = toplamNot / ogr.notlar.length;
+      ogr.ortalamaNot = ortalama;
+      return ogr;
+    });
+
+    console.log(dersOrtalamalari);
+
+
+    let ogrenci={
+      ad:"Ahmet",
+      soyad:"Çelik",
+      yas:21,
+      notlar:[
+        {ders:"Matematik", not:88},
+        {ders:"Fizik", not:82},
+        {ders:"Kimya", not:90}
+      ]
+    }
+
+    let isim=ogrenci.ad;
+    console.log(isim);
+    console.log(isim.toUpperCase())
+
+  </script>
+  
+</body>
+</html>

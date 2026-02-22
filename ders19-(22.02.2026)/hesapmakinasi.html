@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hesap Makinesi</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    input {
+      margin: 5px;
+      padding: 10px;
+      font-size: 16px;
+    }
+
+    .button-groups {
+      display: flex;
+      gap: 10px;
+    }
+
+    button {
+      margin: 5px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    #result {
+      font-weight: bold;
+    }
+  </style>
+
+</head>
+<body>
+
+  <input type="number" id="number1" placeholder="Sayı 1">
+  <input type="number" id="number2" placeholder="Sayı 2" class="number2" >
+  <div class="button-groups">
+    <button onclick="topla()">Topla</button>
+    <button onclick="cikar()">Çıkar</button>
+  </div>
+    
+  <div>
+    Islem Sonucu: <span id="result"></span>
+  </div>
+
+
+  <script>
+    const number1Input = document.getElementById('number1');
+    const number2Input = document.getElementById('number2');
+    const resultDisplay = document.getElementById('result');
+
+     function topla() {
+      const num1 = parseFloat(number1Input.value);
+      const num2 = parseFloat(number2Input.value);
+      const result = num1 + num2;
+      resultDisplay.textContent = result;
+    }
+
+    function cikar() {
+      const num1= parseFloat(number1Input.value)
+      const num2 = parseFloat(number2Input.value)
+      const result= num1-num2;
+      resultDisplay.textContent=result;
+    }
+
+
+  </script>
+
+  
+</body>
+</html>

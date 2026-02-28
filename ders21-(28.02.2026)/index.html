@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dom Yonetmek</title>
+  <style>
+    .card {
+      border: 1px solid #ccc;
+      padding: 20px;
+      margin: 20px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div id="icerik">
+    <h1 class="hello">Merhaba, Mebre!</h1>
+    <p>Bu bir örnek içeriktir.</p>
+    <button id="myButton">Tıkla</button>
+  </div>
+
+  <ul id="icerik-list">
+    <li>Dom Nedir?</li>
+    <li>Dom Seçiciler</li>
+    <li>Dom Manipülasyonu</li>
+  </ul>
+
+  <script>
+    const icerikDiv = document.getElementById('icerik');
+    const baslik = icerikDiv.querySelector('#icerik h1');
+    const paragraf = icerikDiv.querySelector('#icerik p');
+    const baslikClass = document.querySelector('.hello');
+
+    baslikClass.parentElement.style.backgroundColor = "yellow";
+    baslikClass.parentElement.style.padding = "20px";
+    baslikClass.parentElement.style.margin = "10px";
+    baslikClass.parentElement.style.borderRadius = "10px";
+    baslikClass.parentElement.style.border = "2px solid red";
+
+    const button = document.getElementById('myButton');
+    button.addEventListener('click', handleButtonClick);
+
+    function handleButtonClick(e) {
+      console.log("Butona tıklandı!"); // Butona tıklandı!
+      console.log("Tıklanan Element:", e.target.parentElement); // Tıklanan Element: <button id="myButton">Tıkla</button>
+      const parentElement = e.target.parentElement;
+      parentElement.style.display = 'none';
+      setTimeout(() => {
+        parentElement.style.display = 'block';
+      }, 10000); // 10 saniye sonra tekrar göster
+    }
+    
+
+
+    console.log("Başlık:", baslik.textContent); // Başlık: Merhaba, Mebre!
+    console.log("Paragraf:", paragraf.textContent); // Paragraf: Bu bir örnek içeriktir.
+
+    baslik.textContent = "Merhaba, Dünya!";
+    paragraf.textContent = "Bu içerik güncellendi.";
+    baslik.style.color = "blue"; 
+    paragraf.classList.add("card");
+
+    console.log("Güncellenmiş Başlık:", baslik.textContent); // Güncellenmiş Başlık: Merhaba, Dünya!
+    console.log("Güncellenmiş Paragraf:", paragraf.textContent); // Güncellenmiş Paragraf: Bu içerik güncellendi. 
+  </script>
+
+  <script>
+    const icerikList = document.getElementById('icerik-list');
+    const listItems = icerikList.querySelectorAll('li');
+    console.log("Liste Elemanları:", listItems); // Liste Elemanları: NodeList(3) [li, li, li]
+    
+    listItems.forEach((item, index) => {
+      console.log(`Liste Elemanı ${index + 1}:`, item.textContent);
+    });
+
+  </script>
+  
+</body>
+</html>

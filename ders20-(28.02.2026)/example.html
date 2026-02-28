@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mebre Oyun</title>
+</head>
+<body>
+
+  <script>
+    const karakter= {
+      ad: "Karakter",
+      can: 100,
+      silah:{
+        ad: "Kılıç",
+        saldiriGucu: 20,
+      }
+    };
+    
+    const canavar = {
+      ad: "Canavar",
+      can: 100,
+      silah:{
+        ad: "Pençe",
+        saldiriGucu: 20,
+      }
+    };
+
+    function hasarver(saldiran,savunan) {
+      let anlikHasar = hasarOrani(saldiran, savunan);
+      
+      savunan.can -= anlikHasar;
+
+      if (savunan.can<=0) {
+        console.log(`${savunan.ad} öldü!`);
+        savunan.can = 0;
+      }
+
+      return savunan.can;
+    }
+
+    function hasarOrani(saldiran,savunan) {
+      let silahGucu = saldiran.silah.saldiriGucu;
+      let randomSayi = Math.random();
+      let hasarOrani = randomSayi * silahGucu / 5;
+      return hasarOrani;
+    }
+
+    let round = 1;
+    while (karakter.can > 0 && canavar.can > 0) {
+      console.log(`--- Round ${round} ---`);
+      hasarver(karakter, canavar);
+
+      console.log(`${karakter.ad} saldırdı! ${canavar.ad} kalan can: ${canavar.can}`);
+
+      if (canavar.can > 0) {
+        hasarver(canavar, karakter);
+        console.log(`${canavar.ad} saldırdı! ${karakter.ad} kalan can: ${karakter.can}`);
+      }
+
+      round++;
+    }
+
+    if (karakter.can > 0) {
+      console.log(`${karakter.ad} kazandı!`);
+    } else {
+      console.log(`${canavar.ad} kazandı!`);
+    }
+  </script>
+  
+</body>
+</html>

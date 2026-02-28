@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ogrenci Sinav Hesaplama</title>
+</head>
+<body>
+
+  <script>
+    const ogrenciler= [
+      { ad: "Ali", notlar: {
+        vize: 80,
+        final: 90,
+      } },
+      { ad: "Ayşe", notlar: {
+        vize: 70,
+        final: 75,
+      } },
+      { ad: "Mehmet", notlar: {
+        vize: 60,
+        final: 65,
+      } },
+    ];
+
+    function ortalamaHesapla(vize, final) {
+      let ortalama = (vize * 0.4) + (final * 0.6);
+      return Math.round(ortalama);
+    }
+
+    function harfNotuHesapla(ortalama) {
+      if (ortalama >= 90) {
+        return "AA";
+      } else if (ortalama >= 80) {
+        return "BA";
+      } else if (ortalama >= 70) {
+        return "BB";
+      } else if (ortalama >= 60) {
+        return "CB";
+      } else if (ortalama >= 50) {
+        return "CC";
+      } else {
+        return "FF";
+      }
+    }
+
+    for (let ogr of ogrenciler) {
+      let vizeNotu = ogr.notlar.vize;
+      let finalNotu = ogr.notlar.final;
+      let ortalama = ortalamaHesapla(vizeNotu, finalNotu);
+      let harfNotu = harfNotuHesapla(ortalama);
+      console.log(`${ogr.ad} - Ortalama: ${ortalama}, Harf Notu: ${harfNotu}`);
+    }
+  </script>
+  
+</body>
+</html>

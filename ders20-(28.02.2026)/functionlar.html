@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Functionlar</title>
+</head>
+<body>
+
+  <script>
+
+    function topla(a, b) {
+      return a + b;
+    }
+
+    function cikar(a, b) {
+      return a - b;
+    }
+
+    const sayi1 = 10;
+    const sayi2 = 5;
+    const toplamSonucu = topla(sayi1, sayi2);
+    const cikarmaSonucu = cikar(sayi1, sayi2);
+    console.log("Toplam: " + toplamSonucu); // Toplam: 15
+    console.log("Çıkarma: " + cikarmaSonucu); // Çıkarma: 5
+
+    function selamver(isim="Ahmet") {
+      // if (!isim) {
+      //   isim = "Dünya";
+      // }
+      return "Merhaba, " + isim + "!";
+    }
+
+    const selam = selamver();
+    console.log(selam); // Merhaba, Ahmet!
+    
+    function faktoriyel(n) {
+      if (n === 0 || n === 1) {
+        return 1;
+      }
+      return n * faktoriyel(n - 1);
+    }
+
+    const sayi = 5;
+    const sonuc = faktoriyel(sayi);
+    
+    console.log("Faktöriyel: " + sonuc); // Faktöriyel: 120
+
+    // async function veriGetir() {
+    //   const res=await fetch("https://jsonplaceholder.typicode.com/posts/1");
+    //   return res.json();
+    // }
+
+    // veriGetir().then((sonuc) => {
+    //   console.log(sonuc); // Veri başarıyla getirildi!
+    // });
+
+
+  </script>
+
+  <script>
+    console.log(`Bu bir başka script bloğu! ${sayi1} + ${sayi2} = ${toplamSonucu}`);
+  </script>
+  
+</body>
+</html>

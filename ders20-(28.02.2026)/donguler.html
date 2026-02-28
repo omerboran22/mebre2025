@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Donguler</title>
+</head>
+<body>
+
+  <div>
+    <h1>Yildiz primati</h1>
+    <div id="yildizpramit"></div>
+  </div>
+
+
+  <script>
+    const yildizPramit = document.getElementById('yildizpramit');
+    const satirSayisi = 5;
+
+    for (let i = 1; i <= satirSayisi; i++) {
+      let satir = '';
+      for (let column = 1; column <= i; column++) {
+        satir += '*';
+      }
+      const satirElementi = document.createElement('div');
+      satirElementi.innerHTML = satir;
+      yildizPramit.appendChild(satirElementi);
+    }
+
+  </script>
+
+  <script>
+    for (let i = 0; i < 5; i++) {
+      console.log(`Döngü sayısı: ${i}`);
+    }
+
+    let j = 0;
+    while (j < 5) {
+      console.log(`While döngüsü sayısı: ${j}`);
+      j++;
+    }
+
+    let k = 0;
+    do {
+      console.log(`Do-While döngüsü sayısı: ${k}`);
+      k++;
+    } while (k < 5);
+
+    const meyveler = ["Elma", "Muz", "Çilek", "Portakal"];
+    console.log("Meyveler:", meyveler);
+    
+    for (let i = 0; i < meyveler.length; i++) {
+      console.log(`Meyve: ${meyveler[i]}`);
+    }
+
+    for (const meyve of meyveler) {
+      console.log(`For-of döngüsü ile meyve: ${meyve}`);
+    }
+
+    const meyveSayi = {
+      Elma: 10,
+      Muz: 5,
+      Çilek: 20,
+      Portakal: 15
+    };
+    for (const meyve in meyveSayi) {
+      console.log(`Meyve: ${meyve}, Sayı: ${meyveSayi[meyve]}`);
+    }
+
+
+  </script>
+  
+</body>
+</html>

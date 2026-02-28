@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+    // const oyunKarateri={
+    //   isim: "Kratos",
+    //   can: 100,
+    //   silah: "Balta",
+    //   yasiyorMu: true
+    // };
+    
+    // console.log(oyunKarateri);
+
+    // console.log(oyunKarateri.isim); // Kratos
+    // console.log(oyunKarateri.can); // 100
+    // console.log(oyunKarateri['silah']); // Balta
+
+    // console.log('karakter yuksekten dusuyor ve hasar aliyor');
+    // oyunKarateri.can -= 20; // canı 20 azalt
+    // console.log(oyunKarateri.can); // 80 
+
+    // console.log('karakter bir canavarla karsilasiyor ve savasiyor');
+    // oyunKarateri.can -= 30; // canı 30 azalt
+
+    // console.log(oyunKarateri.can); // 50
+
+    // console.log('karakter bir silah buluyor ve silahini degistiriyor');
+    // oyunKarateri.silah = "Kılıç";
+    // console.log(oyunKarateri.silah); // Kılıç
+
+
+    // console.log('karakter bir tuzağa yakalanıyor ve can kaybediyor');
+    // oyunKarateri.can -= 40; // canı 40 azalt
+
+    // console.log(oyunKarateri);
+
+    const karakter = {
+      isim: "Lara Croft",
+      can: 120,
+      silah: "Tabanca",
+      yasiyorMu: true,
+      kendiniTanit: function() {
+        console.log(`Merhaba, ben ${this.isim}. Canım ${this.can} ve silahım ${this.silah}.`);
+      },
+      silahDegistir: function(yeniSilah) {
+        this.silah = yeniSilah;
+        console.log(`Silahım artık ${this.silah}.`);
+      },
+      hasarAl: function(hasar) {
+        this.can -= hasar;
+        console.log(`${hasar} hasar aldım. Kalan canım: ${this.can}.`);
+        if (this.can <= 0) {
+          this.yasiyorMu = false;
+          console.log("Maalesef, karakter öldü.");
+        }
+      }
+    };
+
+    console.log(karakter);
+    karakter.kendiniTanit(); // Merhaba, ben Lara Croft. Canım 120 ve silahım Tabanca.
+    karakter.silahDegistir("Ok ve Yay"); // Silahım artık Ok ve Yay.
+    karakter.hasarAl(30); // 30 hasar aldım. Kalan canım: 90.
+    karakter.hasarAl(100); // 100 hasar aldım. Kalan canım: -10. Maalesef, karakter öldü.
+
+
+  </script>
+</body>
+</html>

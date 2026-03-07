@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo List</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bitcount+Prop+Single:wght@100..900&family=Playwrite+NZ+Basic+Guides&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="todolist.css">
+</head>
+<body>
+  <section class="container">
+    <div class="todolist-container">
+      <h1>TODO List</h1>
+      <div class="form-group">
+        <input class="w-75" type="text" id="taskInput" placeholder="Enter a task">
+        <button type="button" class="btn btn-success w-25" id="addTaskButton">
+          <i class="fas fa-plus"></i>
+          <span>Add</span>
+        </button>
+      </div>
+      <ul id="taskList" class="task-list">
+       
+      </ul>
+    </div>
+  </section>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/js/all.min.js" integrity="sha512-6BTOlkauINO65nLhXhthZMtepgJSghyimIalb+crKRPhvhmsCdnIuGcVbR5/aQY2A+260iC1OPy1oCdB6pSSwQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="todolist.js"></script>
+</body>
+</html>

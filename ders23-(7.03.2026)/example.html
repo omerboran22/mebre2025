@@ -3,9 +3,241 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Dom Example</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    #searchInput {
+      padding: 10px;
+      width: 300px;
+      font-size: 16px;
+    }
+    #searchInputOutput {
+      margin-top: 20px;
+      font-size: 18px;
+      color: #333;
+    }
+    .box{
+      border:1px solid #ccc;
+      padding:20px;
+    }
+    .list{
+      list-style-type:none;
+      width:100%;
+      border:1px solid #ccc;
+      padding:0;
+      height: 200px;
+      overflow-y: auto;
+    }
+
+    .login-form{
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .login-form input{
+      padding: 10px;
+      font-size: 16px;
+    }
+    .login-form button{
+      padding: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .login-form div{
+      display: flex;
+      gap: 10px;
+    }
+  </style>
 </head>
 <body>
+
+  <div class='box'>
+    <input type="text" id='searchInput' placeholder="Search...">
+    <span id="searchInputOutput"></span>
+    <ul class='list'></ul>
+  </div>
+
+  <script>
+    const keyler = [
+  "hava durumu",
+  "son dakika haberler",
+  "en iyi telefon 2026",
+  "istanbul gezilecek yerler",
+  "en iyi kahve makineleri",
+  "youtube video indir",
+  "bedava oyunlar",
+  "en iyi laptop önerileri",
+  "film önerileri",
+  "en iyi diziler",
+  "yapay zeka nedir",
+  "chatgpt nasıl kullanılır",
+  "javascript öğrenme",
+  "nodejs tutorial",
+  "react nedir",
+  "programlama nasıl öğrenilir",
+  "en iyi kulaklık",
+  "iphone fiyatları",
+  "android uygulamaları",
+  "en iyi vpn",
+  "internetten para kazanma",
+  "freelance işler",
+  "evden çalışma işleri",
+  "kripto para nedir",
+  "bitcoin fiyatı",
+  "ethereum nedir",
+  "borsa nasıl öğrenilir",
+  "altın fiyatları",
+  "dolar kaç tl",
+  "en iyi yatırım 2026",
+  "spor haberleri",
+  "futbol sonuçları",
+  "şampiyonlar ligi",
+  "nba sonuçları",
+  "f1 yarış takvimi",
+  "fitness programı",
+  "evde egzersiz",
+  "kas yapma yöntemleri",
+  "zayıflama diyeti",
+  "sağlıklı beslenme",
+  "makarna tarifi",
+  "tavuk yemekleri",
+  "en iyi pizza tarifi",
+  "tatlı tarifleri",
+  "kolay yemek tarifleri",
+  "vegan yemekler",
+  "gezilecek ülkeler",
+  "ucuz uçak bileti",
+  "tatil önerileri",
+  "avrupa turu",
+  "vize nasıl alınır",
+  "ingilizce nasıl öğrenilir",
+  "online kurslar",
+  "ücretsiz eğitim siteleri",
+  "python öğrenme",
+  "sql nedir",
+  "linux komutları",
+  "docker nedir",
+  "kubernetes nedir",
+  "siber güvenlik",
+  "hack nedir",
+  "wifi şifresi değiştirme",
+  "modem ayarları",
+  "internet hız testi",
+  "en iyi tarayıcı",
+  "google chrome eklentileri",
+  "firefox eklentileri",
+  "en iyi not alma uygulaması",
+  "todo uygulamaları",
+  "zaman yönetimi",
+  "verimlilik teknikleri",
+  "motivasyon sözleri",
+  "kişisel gelişim",
+  "kitap önerileri",
+  "en çok satan kitaplar",
+  "bilim haberleri",
+  "uzay haberleri",
+  "mars görevi",
+  "nasa haberleri",
+  "yeni teknolojiler",
+  "akıllı ev sistemleri",
+  "robot teknolojisi",
+  "yapay zeka araçları",
+  "ai image generator",
+  "logo tasarım fikirleri",
+  "web tasarım trendleri",
+  "ui ux nedir",
+  "figma nedir",
+  "photoshop dersleri",
+  "video edit programı",
+  "en iyi kamera",
+  "fotoğraf çekme teknikleri",
+  "drone fiyatları",
+  "araba fiyatları",
+  "elektrikli araba",
+  "tesla modelleri",
+  "oto inceleme",
+  "yeni çıkan oyunlar",
+  "steam indirimleri"
+];
+    let filterrdKeyler = keyler
+    const searchInput = document.getElementById('searchInput');
+    const searchInputOutput = document.getElementById('searchInputOutput');
+
+    searchInput.addEventListener('input', () => {
+      searchInputOutput.textContent = `You typed: ${searchInput.value}`;
+      filterrdKeyler = keyler.filter(key => key.includes(searchInput.value));
+      document.querySelector('.list').innerHTML = filterrdKeyler.map(key => `<li>${key}</li>`).join('');
+    });
+
+    document.querySelector('.list').innerHTML = filterrdKeyler.map(key => `<li>${key}</li>`).join('');
+
+  </script>
+
+
+<div class="login-form box">
+  <h2>login</h2>
+  <input type="text" placeholder="username">
+  <div id="passgr">
+    <input type="password" placeholder="password">
+    <button>
+      <span>show/hide password</span>
+    </button>
+  </div>
+
+  <button>Login</button>
+
+</div>
+
+<script>
+  const passwordInput = document.querySelector('.login-form input[type="password"]');
+  const toggleButton = document.querySelector('.login-form #passgr button');
+
+  toggleButton.addEventListener('click', () => {
+    if (passwordInput.type === 'password') {
+      passwordInput.type = 'text';
+      toggleButton.textContent = 'hide password';
+    } else {
+      passwordInput.type = 'password';
+      toggleButton.textContent = 'show password';
+    }
+  });
+
+</script>
+
+
+<div class="box">
+
+  <button onclick="increment(this,event)">
+    sayi azalt
+  </button>
+  <span id="counter">
+    0
+  </span>
+  <button id="incrementButton">
+    sayi arttır
+  </button>
+
+  <script>
+    let counter = 0;
+    const counterSpan = document.getElementById('counter');
+
+    const buton=document.querySelector('#incrementButton')
+    buton.addEventListener('click', increment)
+
+    function increment(eventelement,event) {
+      const element = event.target;
+      element.style.backgroundColor = 'yellow';
+      counter += 1;
+      counterSpan.textContent = counter;
+    }
+
+  </script>
+
+</div>
+
   
 </body>
 </html>

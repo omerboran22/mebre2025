@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Ekrani</title>
+</head>
+<body>
+  <div id="quiz-container">
+    <h1>Quiz Ekranı</h1>
+    <p id="question"></p>
+    <div id="options"></div>
+  </div>
+
+  <script>
+    // Quiz sorularını ve cevaplarını tanımla
+    const quizData = [
+      {
+        question: "Türkiye'nin başkenti neresidir?",
+        options: ["Ankara", "İstanbul", "İzmir", "Bursa"],
+        answer: "Ankara"
+      },
+      {
+        question: "Dünyanın en büyük okyanusu hangisidir?",
+        options: ["Atlantik Okyanusu", "Hint Okyanusu", "Pasifik Okyanusu", "Arktik Okyanusu"],
+        answer: "Pasifik Okyanusu"
+      },
+      {
+        question: "Hangi gezegen Güneş'e en yakın olanıdır?",
+        options: ["Venüs", "Mars", "Merkür", "Jüpiter"],
+        answer: "Merkür"
+      }
+    ];
+
+    let currentQuestionIndex = 0;
+    let score = 0;
+
+    function loadQuestion() {
+      const questionElement = document.getElementById("question");
+      const optionsElement = document.getElementById("options");
+
+      // Mevcut soruyu yükle
+      const currentQuestion = quizData[currentQuestionIndex];
+      questionElement.textContent = currentQuestion.question;
+
+      // Seçenekleri temizle
+      optionsElement.innerHTML = "";
+
+      // Seçenekleri oluştur
+      currentQuestion.options.forEach(option => {
+        const button = document.createElement("button");
+        button.textContent = option;
+        button.addEventListener("click", () => checkAnswer(option));
+        optionsElement.appendChild(button);
+      });
+    }
+
+    function checkAnswer(selectedOption) {
+      const currentQuestion = quizData[currentQuestionIndex];
+      
+      if (selectedOption === currentQuestion.answer) {
+        score++;
+      }
+
+      currentQuestionIndex++;
+
+      if (currentQuestionIndex < quizData.length) {
+        loadQuestion();
+      } else {
+        showResult();
+      }
+    }
+
+    function showResult() {
+      const quizContainer = document.getElementById("quiz-container");
+      quizContainer.innerHTML = `<h2>Quiz Sonuçları</h2><p>Doğru Cevaplar: ${score} / ${quizData.length}</p>`;
+    }
+
+    // Sayfa yüklendiğinde ilk soruyu göster
+    window.onload = loadQuestion;
+  </script>
+  
+</body>
+</html>

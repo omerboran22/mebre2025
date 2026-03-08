@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Ekrani</title>
+</head>
+<body>
+  <div id="quiz-container">
+    <h1>Quiz Ekranı</h1>
+    <p id="question"></p>
+    <div id="options"></div>
+  </div>
+
+  <script>
+
+    let currentQuestionIndex = 0;
+    class Quiz {
+      constructor(question, options, answer) {
+        this.question = question;
+        this.options = options;
+        this.answer = answer;
+      }
+
+      loadQuestion() {
+        const questionElement = document.getElementById("question");
+        const optionsElement = document.getElementById("options");
+
+        // Mevcut soruyu yükle
+        questionElement.textContent = this.question;
+
+        // Seçenekleri temizle
+        optionsElement.innerHTML = "";
+
+        // Seçenekleri oluştur
+        this.options.forEach(option => {
+          const button = document.createElement("button");
+          button.textContent = option;
+          button.addEventListener("click", () => this.checkAnswer(option));
+          optionsElement.appendChild(button);
+        });
+      }
+
+      checkAnswer(selectedOption) {
+        if (selectedOption === this.answer) {
+          alert("Doğru!");
+          currentQuestionIndex++;
+          loadQuestion();
+        } else {
+          alert("Yanlış!");
+        }
+      }
+    }
+
+
+    // Quiz sorularını ve cevaplarını tanımla
+    const quizData = [
+      {
+        question: "Türkiye'nin başkenti neresidir?",
+        options: ["Ankara", "İstanbul", "İzmir", "Bursa"],
+        answer: "Ankara"
+      },
+      {
+        question: "Dünyanın en büyük okyanusu hangisidir?",
+        options: ["Atlantik Okyanusu", "Hint Okyanusu", "Pasifik Okyanusu", "Arktik Okyanusu"],
+        answer: "Pasifik Okyanusu"
+      },
+      {
+        question: "Hangi gezegen Güneş'e en yakın olanıdır?",
+        options: ["Venüs", "Mars", "Merkür", "Jüpiter"],
+        answer: "Merkür"
+      }
+    ];
+
+    const quiz1= new Quiz(quizData[0].question, quizData[0].options, quizData[0].answer);
+    const quiz2= new Quiz(quizData[1].question, quizData[1].options, quizData[1].answer);
+    const quiz3= new Quiz(quizData[2].question, quizData[2].options, quizData[2].answer);
+    const questions = [quiz1, quiz2, quiz3];
+
+    function loadQuestion() {
+      questions[currentQuestionIndex].loadQuestion();
+    }
+
+    window.onload = loadQuestion;
+  </script>
+  
+</body>
+</html>

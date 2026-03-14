@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <script>
+    class Vehicle {
+      constructor(make, model) {
+        this.make = make;
+        this.model = model;
+      }
+
+      displayInfo() {
+        console.log(`Vehicle: ${this.make} ${this.model}`);
+      }
+    }
+
+    class Car extends Vehicle {
+      constructor(make, model, doors) {
+        super(make, model);
+        this.doors = doors;
+      }
+
+      displayInfo() {
+        super.displayInfo();
+        console.log(`Doors: ${this.doors}`);
+      }
+    }
+
+    const car1 = new Car("Toyota", "Camry", 4);
+    car1.displayInfo();
+
+    class Person {
+      constructor(name, age) {
+        this.name = name;
+        this.age = age;
+      }
+
+      get getir() {
+        return this._name;
+      }
+      set yazdir(value) {
+        this._name = value;
+      }
+    }
+
+    const person1 = new Person("Alice", 30);
+    console.log(person1.getir); // Alice
+    person1.yazdir = "Bob";
+    console.log(person1.getir); // Bob
+
+    class Animal {
+      constructor(name) {
+        this.name = name;
+      }
+
+      speak() {
+        console.log(`${this.name} Hayvan sesi çıkarıyor.`);
+      }
+    }
+
+    class Dog extends Animal {
+      constructor(name, breed) {
+        super(name);
+        this.breed = breed;
+      }
+      bark() {
+        console.log(`${this.name} havlıyor.`);
+      }
+    }
+
+
+    const dog1 = new Dog("Buddy", "Golden Retriever");
+    dog1.speak(); // Buddy Hayvan sesi çıkarıyor.
+    dog1.bark(); // Buddy havlıyor.
+
+
+
+
+  </script>
+  
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modern Javascript Nedir</title>
+</head>
+<body>
+
+  <div onclick="customsum(1,2)">
+    test
+  </div>
+  
+  <script>
+    var a = 5;
+    console.log(a);
+    a={
+      name:"Ali",
+      age:25
+    }
+    console.log(a);
+
+    let b = 10;
+    console.log(b);
+    b = 20;
+    b={
+      name:"Ayşe",
+      age:30
+    }
+    console.log(b);
+    const c = 15;
+    console.log(c);
+
+    function customsum(x,y){
+      console.log(x);
+      return x+y;
+    }
+
+    console.log([1,2,34]);
+
+    console.log(customsum(5,10));
+
+    //  ES6 ile gelen yeni fonksiyon tanımlama yöntemi
+    // Arrow function
+    const sum2 = (x,y) => x+y;
+
+    const sum3 = (x,y) => {
+      console.log("Toplama işlemi yapılıyor...");
+      return x+y;
+    }
+    console.log(sum2(5,10));
+    console.log(sum3(5,10));
+
+  </script>
+</body>
+</html>

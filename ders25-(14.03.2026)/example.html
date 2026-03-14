@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Array Methods Example</title>
+</head>
+<body>
+  
+  <h2></h2>
+
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Age</th>
+    </tr>
+    <tbody id="table-body"></tbody>
+  </table>
+  <script>
+    const title=document.querySelector("h2");
+    const tableBody=document.getElementById("table-body");
+    const cart=[
+      {name:"Laptop", price:5000, quantity:2}, //10000
+      {name:"Phone", price:3000, quantity:3},//9000
+      {name:"Tablet", price:2000, quantity:1}//2000
+    ]
+
+    const totalPrice = cart.reduce((total, item) => total + item.price * item.quantity, 0);
+    console.log("Total Price:", totalPrice);
+    const totalPricev2= cart
+    .map(item => item.price * item.quantity)
+    .reduce((total, price) => total + price, 0)
+    .toLocaleString('en-US', { style: 'currency', currency: 'TRY' });
+    console.log(totalPricev2)
+    title.textContent=`Total Price: ${totalPricev2}`;
+
+
+    const users = [
+      { name: "Ali", age: 17 },
+      { name: "Ayşe", age: 22 },
+      { name: "Mehmet", age: 30 },
+      { name: "Zeynep", age: 15 }
+    ];
+
+    const adults = users.filter(user => user.age >= 18).
+    forEach(user => {
+      const row = document.createElement("tr");
+      const nameCell = document.createElement("td");
+      const ageCell = document.createElement("td");
+      nameCell.textContent = user.name;
+      ageCell.textContent = user.age;
+      row.appendChild(nameCell);
+      row.appendChild(ageCell);
+      tableBody.appendChild(row);
+    });
+
+
+    const orders = [
+      { product: "Laptop", category: "electronics" },
+      { product: "Phone", category: "electronics" },
+      { product: "Shirt", category: "clothing" }
+    ];
+
+    const groupedOrders = orders.reduce((groups, order) => {
+      const category = order.category;
+      if (!groups[category]) {
+        groups[category] = [];
+      }
+      groups[category].push(order.product);
+      return groups;
+    }, {});
+
+    console.log(groupedOrders);
+
+
+    const emails = [
+      "a@mail.com",
+      "b@mail.com",
+      "a@mail.com",
+      "c@mail.com"
+    ];
+
+    const uniqueEmails = emails.filter((email, index, self) => self.indexOf(email) === index);
+    // console.log(uniqueEmails);
+
+    const uniqueEmailsSet = new Set(emails)
+    // console.log(Array.from(uniqueEmailsSet));
+
+    const uniqueEmailsSetV2 = [...new Set(emails)]
+    // console.log(uniqueEmailsSetV2);
+
+
+
+    const puan=75;
+    const genelpuan=80;
+
+    if(puan>70 && puan<genelpuan){
+      console.log("Puanınız genel puanın altında, daha çok çalışmalısınız.");
+    }
+
+    if(puan>genelpuan || puan>90){
+      console.log("Puanınız genel puanın üzerinde, tebrikler!");
+    }
+
+
+    let person = {
+      name: "Ali",
+      age: 25,
+      city: "Istanbul"
+    };
+
+    let name = person.name;
+    let age = person.age;
+    let city = person.city;
+    // console.log(`${name} is ${age} years old and lives in ${city}.`);
+
+    const { name: personName, age: personAge, city: personCity } = person;
+
+    // const personName = person.name;
+    // const personAge = person.age;
+    // const personCity = person.city;
+    // console.log(`${personName} is ${personAge} years old and lives in ${personCity}.`);
+
+    function displayPersonInfo(props) {
+      const { name, age, city } = props;
+      console.log(`${name} is ${age} years old and lives in ${city}.`);
+    }
+
+    function ticketforCinema(request) {
+      const { movie, time, seat } = request.body;
+      console.log(`Your ticket for ${movie} at ${time} is booked. Your seat number is ${seat}.`);
+    }
+
+    // ticketforCinema({
+    //   body: {
+    //     movie: "Inception",
+    //     time: "7:00 PM",
+    //     seat: "A12"
+    //   }
+    // });
+
+
+    let formdata = new FormData();
+    formdata.append("username", "Ali");
+    formdata.append("password", "123456");
+    const userName = formdata.get("username");
+    const password = formdata.get("password");
+
+    // console.log(`Username: ${userName}, Password: ${password}`);
+
+    let maps = new Map();
+    maps.set("name", "Ali");
+    maps.set("age", 25);
+    const nameFromMap = maps.get("name");
+    const ageFromMap = maps.get("age");
+
+
+    let sets = new Set();
+
+    sets.add("Ali");
+    sets.add("Ali");
+    sets.add("Ali");
+    sets.add("Ayşe");
+
+    // console.log(sets);
+
+  </script>
+</body>
+</html>

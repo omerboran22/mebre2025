@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Senkron ve Asenkron Islemler Vanilla JS</title>
+</head>
+<body>
+
+
+  <div>
+    <h1>Senkron ve Asenkron Islemler Vanilla JS</h1>
+    <p>Bu dersimizde senkron ve asenkron işlemleri vanilla JavaScript kullanarak öğreneceğiz.</p>
+  </div>
+
+  <div>
+    <h3 id="musteri"></h3>
+    <p id="siparis"></p>
+    <p id="durum"></p>
+  </div>
+
+
+  <script>
+
+    async function  siparisYonetim() {
+      const musteriElement = document.getElementById("musteri");
+      const siparisElement = document.getElementById("siparis");
+      const durumElement = document.getElementById("durum");
+      // Asenkron işlem
+      setTimeout(function () {
+        console.log("Sipariş hazırlandı.");
+        durumElement.textContent = "Durum: Sipariş hazırlandı.";
+      }, 10000);
+
+      
+      console.log("Müşteri geldi.");
+      musteriElement.textContent = "Müşteri: Ahmet";
+      
+      await new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve("Sipariş hazırlandı.");
+        }, 10000);
+      }).then((message) => {
+        console.log(message);
+        durumElement.textContent = "Durum: " + message;
+      });
+
+      
+      // Senkron işlem
+      console.log("Sipariş hazırlanıyor...");
+      siparisElement.textContent = "Sipariş: Pizza";
+      
+      
+      console.log("Sipariş süreci devam ediyor...");
+      durumElement.textContent = "Durum: Sipariş hazırlanıyor...";
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+      siparisYonetim();
+
+    });
+  </script>
+  
+</body>
+</html>

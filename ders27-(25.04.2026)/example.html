@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JsonPlaceholder</title>
+</head>
+<body>
+
+  
+  <root></root>
+
+  <script src="./constans.js"></script>
+  <script >
+    async function load(params) {
+    const root = document.querySelector('root');
+    const randomUserId = Math.floor(Math.random() * 10) + 1;
+    const url= window.JSON_URL
+
+    const loadingUsers=true
+     await fetch(`${url}/users/${randomUserId}`)
+      .then(response => response.json())
+      .then(user => {
+        const userElement = document.createElement('div');
+        userElement.textContent = `User: ${user.name} (${user.email})`;
+        root.appendChild(userElement);
+      })
+      .catch(error => {
+        console.error('Error fetching user:', error);
+        const errorElement = document.createElement('div');
+        errorElement.textContent = 'Failed to fetch user data.';
+        root.appendChild(errorElement);
+      }).finally(() => {
+        console.log('User data fetch attempt completed.');
+        loadingUsers=false
+      });
+
+     await fetch(`${url}/posts?userId=${randomUserId}`)
+      .then(response => response.json())
+      .then(posts => {
+        const postsElement = document.createElement('div');
+        postsElement.textContent = `Posts by User ${randomUserId}:`;
+        const postsList = document.createElement('ul');
+        posts.forEach(post => {
+          const postItem = document.createElement('li');
+          postItem.textContent = post.title;
+          postsList.appendChild(postItem);
+        });
+        postsElement.appendChild(postsList);
+        root.appendChild(postsElement);
+      })
+      .catch(error => {
+        console.error('Error fetching posts:', error);
+        const errorElement = document.createElement('div');
+        errorElement.textContent = 'Failed to fetch posts data.';
+        root.appendChild(errorElement);
+      });
+
+      await fetch(`${url}/comments?postId=${randomUserId}`)
+      .then(response => response.json())
+      .then(comments => {
+        const commentsElement = document.createElement('div');
+        commentsElement.textContent = `Comments for Post ${randomUserId}:`;
+        const commentsList = document.createElement('ul');
+        comments.forEach(comment => {
+          const commentItem = document.createElement('li');
+          commentItem.textContent = `${comment.name} (${comment.email}): ${comment.body}`;
+          commentsList.appendChild(commentItem);
+        });
+        commentsElement.appendChild(commentsList);
+        root.appendChild(commentsElement);
+      })
+
+      await fetch(`${url}/todos?userId=${randomUserId}`)
+      .then(response => response.json())
+      .then(todos => {
+        const todosElement = document.createElement('div');
+        todosElement.textContent = `Todos for User ${randomUserId}:`;
+        const todosList = document.createElement('ul');
+        todos.forEach(todo => {
+          const todoItem = document.createElement('li');
+          todoItem.textContent = `${todo.title} - ${todo.completed ? 'Completed' : 'Pending'}`;
+          todosList.appendChild(todoItem);
+        });
+        todosElement.appendChild(todosList);
+        root.appendChild(todosElement);
+      })
+
+      await fetch(`${url}/albums?userId=${randomUserId}`)
+      .then(response => response.json())
+      .then(albums => {
+        const albumsElement = document.createElement('div');
+        albumsElement.textContent = `Albums for User ${randomUserId}:`;
+        const albumsList = document.createElement('ul');
+        albums.forEach(album => {
+          const albumItem = document.createElement('li');
+          albumItem.textContent = album.title;
+          albumsList.appendChild(albumItem);
+        });
+        albumsElement.appendChild(albumsList);
+        root.appendChild(albumsElement);
+      })
+       .catch(error => {
+        console.error('Error fetching albums:', error);
+        const errorElement = document.createElement('div');
+        errorElement.textContent = 'Failed to fetch albums data.';
+        root.appendChild(errorElement);
+      });
+
+      await fetch(`${url}/photos?albumId=${randomUserId}`)
+      .then(response => response.json())
+      .then(photos => {
+        const photosElement = document.createElement('div');
+        photosElement.textContent = `Photos for Album ${randomUserId}:`;
+        const photosList = document.createElement('ul');
+        photos.forEach(photo => {
+          const photoItem = document.createElement('li');
+          const photoPreview = document.createElement('img');
+          photoPreview.src = photo.thumbnailUrl;
+          photoPreview.alt = photo.title;
+          photoItem.appendChild(photoPreview);
+          const photoTitle = document.createElement('span');
+          photoTitle.textContent = ` ${photo.title}`;
+          photoItem.appendChild(photoTitle);
+          photosList.appendChild(photoItem);
+
+        });
+        photosElement.appendChild(photosList);
+        root.appendChild(photosElement);
+      })
+       .catch(error => {
+        console.error('Error fetching photos:', error);
+        const errorElement = document.createElement('div');
+        errorElement.textContent = 'Failed to fetch photos data.';
+        root.appendChild(errorElement);
+      });
+      
+      
+    }
+
+    document.addEventListener('DOMContentLoaded', load);
+    
+
+  </script>
+
+</body>
+</html>

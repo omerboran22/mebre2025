@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+      // 1. ADIM: Ajanımızı (XMLHttpRequest nesnesini) oluşturuyoruz.
+      const ajan = new XMLHttpRequest();
+
+      // 2. ADIM: Ajanın görevini ve hedefini belirliyoruz.
+      // - "GET": Gidip oradan veri getirecek (Okuma yapacak).
+      // - URL: Gideceği adres (Ücretsiz sahte veri API'si).
+      // - true: Asenkron çalışsın (Biz sayfada gezinmeye devam edelim, o arka planda gitsin).
+      ajan.open("GET", "https://jsonplaceholder.typicode.com/users/1", true);
+
+      // 3. ADIM: Ajan görevden dönünce ne yapacağını söylüyoruz. (Burası hemen çalışmaz, veri gelince çalışır)
+      ajan.onload = function() {
+          
+          // HTTP durum kodu 200 ise (Yani işlem 'OK' - Başarılı ise)
+          if (ajan.status === 200) {
+              
+              // Sunucudan gelen kargo saf metin (String) halindedir. 
+              // JSON.parse() ile bunu JavaScript'in anlayacağı bir Objeye çeviriyoruz.
+              const kullanici = JSON.parse(ajan.responseText);
+              
+              console.log("✔ Ajan görevden başarıyla döndü!");
+              console.log("Kullanıcı Adı:", kullanici.name);
+              console.log("Şehri:", kullanici.address.city);
+              
+          } else {
+              // Sayfa bulunamazsa (404) veya sunucu çökerse (500) burası çalışır
+              console.error("❌ Görev başarısız. Hata Kodu:", ajan.status);
+          }
+      };
+
+      // 4. ADIM: Her şey planlandı, artık ajanı yola çıkarıyoruz!
+      ajan.send();
+
+      // Bu satır ajan dönmeden ÇOK DAHA ÖNCE çalışacaktır. (Asenkron kanıtı)
+      console.log("Ajan yola çıktı, veri gelene kadar biz başka işler yapabiliriz...");
+  </script>
+</body>
+</html>

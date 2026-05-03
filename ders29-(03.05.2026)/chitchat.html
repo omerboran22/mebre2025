@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Socket Chat UI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            base: "#0f172a",
+            panel: "#111827",
+            line: "#1f2937",
+            soft: "#94a3b8",
+            brand: "#22c55e",
+            brandDark: "#16a34a"
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="min-h-screen bg-slate-950 text-white">
+  <main class="flex min-h-screen items-center justify-center bg-[radial-gradient(circle_at_top,#1e293b_0%,#020617_55%)] p-4">
+    <section class="w-full max-w-5xl overflow-hidden rounded-3xl border border-white/10 bg-white/5 shadow-2xl backdrop-blur">
+      <div class="grid min-h-[720px] lg:grid-cols-[380px_1fr]">
+        <aside class="flex flex-col justify-between border-b border-white/10 bg-slate-900/80 p-8 lg:border-b-0 lg:border-r">
+          <div>
+            <div class="inline-flex items-center gap-2 rounded-full border border-emerald-400/20 bg-emerald-400/10 px-3 py-1 text-xs font-medium text-emerald-300">
+              <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
+              Socket Chat
+            </div>
+
+            <h1 class="mt-6 text-4xl font-bold tracking-tight">Once kullanici adini gir, sonra baglan.</h1>
+            <p class="mt-4 text-sm leading-7 text-slate-300">
+              Akis basit: kullanici adini yaz, connect butonuna bas, sonra sohbet ekranina gec.
+            </p>
+
+            <div class="mt-10 rounded-2xl border border-white/10 bg-white/5 p-5">
+              <p class="text-xs uppercase tracking-[0.28em] text-slate-400">Baglanti Adimi</p>
+              <label class="mt-4 block">
+                <span class="mb-2 block text-sm text-slate-200">Kullanici adi</span>
+                <input
+                  type="text"
+                  placeholder="ornek: ahmet01"
+                  id="username"
+                  class="w-full rounded-2xl border border-white/10 bg-slate-950/80 px-4 py-3 text-sm text-white outline-none transition focus:border-emerald-400"
+                >
+              </label>
+
+              <button id="setUserNameButton" class="mt-4 w-full rounded-2xl bg-emerald-500 px-4 py-3 text-sm font-semibold text-slate-950 transition hover:bg-emerald-400">
+                Connect
+              </button>
+
+              <p class="mt-3 text-xs text-slate-400">Tasarim amacli. Buton sonraki asamada socket baglantisina baglanacak.</p>
+            </div>
+          </div>
+
+          <div class="mt-8 rounded-2xl border border-white/10 bg-slate-950/60 p-5">
+            <p class="text-sm font-medium text-white">Beklenen akis</p>
+            <div class="mt-4 space-y-3 text-sm text-slate-300">
+              <div class="flex items-center gap-3">
+                <span class="flex h-7 w-7 items-center justify-center rounded-full bg-white/10 text-xs">1</span>
+                <span>Kullanici adi girilir</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <span class="flex h-7 w-7 items-center justify-center rounded-full bg-white/10 text-xs">2</span>
+                <span>Connect ile odaya girilir</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <span class="flex h-7 w-7 items-center justify-center rounded-full bg-white/10 text-xs">3</span>
+                <span>Mesajlasma ekrani acilir</span>
+              </div>
+            </div>
+          </div>
+        </aside>
+
+        <section class="flex flex-col bg-slate-950/40">
+          <header class="flex items-center justify-between border-b border-white/10 px-5 py-4 sm:px-8">
+            <div>
+              <p class="text-xs uppercase tracking-[0.28em] text-slate-400">Chat Preview</p>
+              <h2 class="mt-1 text-2xl font-semibold">Genel Oda</h2>
+            </div>
+            <div class="rounded-full border border-emerald-400/20 bg-emerald-400/10 px-4 py-2 text-sm text-emerald-300">
+              Connected
+            </div>
+          </header>
+
+          <div class="flex-1 space-y-5 overflow-y-auto px-5 py-6 sm:px-8">
+            <div class="flex justify-center">
+              <span class="rounded-full bg-white/5 px-4 py-2 text-xs text-slate-400">Baglanti kurulduktan sonra bu alan gorunur</span>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <div class="flex h-10 w-10 items-center justify-center rounded-full bg-emerald-500 font-semibold text-slate-950">A</div>
+              <div class="max-w-xl rounded-2xl rounded-tl-sm bg-white/10 px-4 py-3">
+                <div class="flex items-center gap-2">
+                  <span class="text-sm font-semibold">Ahmet</span>
+                  <span class="text-xs text-slate-400">21:02</span>
+                </div>
+                <p class="mt-2 text-sm leading-6 text-slate-200">Selam, baglanti ekrani once gelsin istiyordum. Bu yapi daha dogru.</p>
+              </div>
+            </div>
+
+            <div class="flex justify-end">
+              <div class="max-w-xl rounded-2xl rounded-tr-sm bg-emerald-500 px-4 py-3 text-slate-950">
+                <div class="flex items-center justify-end gap-2">
+                  <span class="text-xs text-emerald-950/70">21:03</span>
+                  <span class="text-sm font-semibold">Sen</span>
+                </div>
+                <p class="mt-2 text-sm leading-6">Kullanici adi girildikten sonra connect olacak akisi tasarima ekledim.</p>
+              </div>
+            </div>
+          </div>
+
+          <footer class="border-t border-white/10 px-5 py-4 sm:px-8">
+            <div class="flex items-center gap-3 rounded-2xl border border-white/10 bg-slate-900/70 p-3">
+              <input
+                type="text"
+                placeholder="Mesaj yaz..."
+                class="flex-1 bg-transparent px-3 py-2 text-sm text-white outline-none placeholder:text-slate-500"
+              >
+              <button class="rounded-xl bg-emerald-500 px-5 py-2.5 text-sm font-semibold text-slate-950 transition hover:bg-emerald-400">
+                Gonder
+              </button>
+            </div>
+          </footer>
+        </section>
+      </div>
+    </section>
+  </main>
+  <script type="module">
+    import { io } from "https://cdn.socket.io/4.8.3/socket.io.esm.min.js";
+
+  // 1. Kullanıcı adını al
+  // 2. io() ile bağlan
+  // 3. chat:bootstrap geldiğinde kullanıcı ve listeyi doldur
+  // 4. chat:message event’ini mesaj listesine ekle
+  // 5. chat:system event’ini sistem mesajı olarak ekle
+  // 6. chat:users event’i gelince online listeyi yenile
+  // 7. Form submit’te chat:message emit et
+
+    let chat;
+    function setUserName() {
+      const usernameInput = document.getElementById('username');
+      const username = usernameInput.value.trim();
+      if (username) {
+        alert(`Kullanici adi "${username}" olarak ayarlandi. Socket baglantisi burada kurulacak.`);
+        // Burada socket baglantisi kurulacak ve chat ekranina gecilecek.
+        chat = new chatSocket(username);
+        chat.connect();
+      } else {
+        alert('Lutfen gecerli bir kullanici adi giriniz.');
+      }
+    }
+
+    class chatSocket {
+      constructor(username) {
+        this.username = username;
+        this.socket = null;
+        this.socketID = null;
+      }
+
+      connect() {
+        this.socket = io('http://localhost:3000', {
+          transports: ["websocket", "polling"],
+          query: { username: this.username }
+        });
+        this.socket.on('connect', () => {
+          this.socketID = this.socket.id;
+          console.log('Socket baglantisi kuruldu:', this.socket.id);
+        });
+        // Burada diger socket olaylarini dinleyebiliriz (mesaj alma, gonderme, vs.)
+      }
+
+      bootstrap(callback) {
+        if (this.socket) {
+          this.socket.on('chat:bootstrap', (data) => {
+            callback(data);
+          });
+        }
+      }
+
+      sendMessage(message) {
+        if (this.socket) {
+          this.socket.emit('chat:message', { message });
+        }
+      }
+
+      listenMessages(callback) {
+        if (this.socket) {
+          this.socket.on('chat:message', (data) => {
+            callback(data);
+          });
+        }
+      }
+
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // Burada sayfa yuklendikten sonra gerekli event listener'lar eklenebilir.
+      const setUserNameButton = document.getElementById('setUserNameButton');
+      setUserNameButton.addEventListener('click', setUserName);
+    });
+
+  </script>
+</body>
+</html>

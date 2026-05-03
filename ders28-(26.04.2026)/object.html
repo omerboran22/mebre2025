@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Object Nedir</title>
+</head>
+<body>
+
+  <script>
+    const bilgisayar = {
+      islemci: "i7",
+      ram: "16GB",
+      ssd: "512GB"
+    };
+    const keys = Object.keys(bilgisayar);
+    keys.forEach(key => {
+      console.log(key); // "islemci", "ram", "ssd"
+    });
+    Object.values(bilgisayar).forEach(value => {
+      console.log(value); // "i7", "16GB", "512GB"
+    });
+    Object.entries(bilgisayar).forEach(([key, value],index) => {
+      console.log(`${index}--> ${key}: ${value}`); // "islemci: i7", "ram: 16GB", "ssd: 512GB"
+    });
+    // Object.freeze(bilgisayar);
+    bilgisayar.ram = "32GB"; // Değişiklik yapılmaz
+    console.log(bilgisayar.ram); // "16GB"
+    Object.assign(bilgisayar, { ekranKarti: "RTX 3060" });
+    console.log(bilgisayar); // "RTX 3060
+    // Object.seal(bilgisayar);
+    delete bilgisayar.ssd; // Silme işlemi başarısız olur
+    console.log(bilgisayar.ssd); // "512GB"
+    Object.defineProperty(bilgisayar, 'islemci', {
+      value: 'i9',
+      writable: false
+    });
+    bilgisayar.islemci = 'i9'; // Değişiklik yapılmaz
+    console.log(bilgisayar.islemci); // "i9"
+    console.log(Object.getPrototypeOf(bilgisayar)); // {} (Boş bir nesne)
+    console.log(Object.hasOwnProperty.call(bilgisayar, 'ram')); // true
+
+  </script>
+  
+</body>
+</html>

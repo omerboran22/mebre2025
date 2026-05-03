@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Socket Chat UI</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.socket.io/4.8.3/socket.io.min.js"></script>
   <script>
     tailwind.config = {
       theme: {
@@ -33,13 +34,13 @@
               Baglandiktan sonra mesaj gonderme ve mesaj alma gorunumu ayni ekranda islenecek.
             </p>
 
-            <div class="mt-10 rounded-2xl border border-white/10 bg-white/5 p-5">
+            <form id="login-form" class="mt-10 rounded-2xl border border-white/10 bg-white/5 p-5">
               <p class="text-xs uppercase tracking-[0.28em] text-slate-400">Baglanti Adimi</p>
 
               <label class="mt-4 block">
                 <span class="mb-2 block text-sm text-slate-200">Kullanici adi</span>
                 <input
-                  id="usernameInput"
+                  id="username"
                   type="text"
                   placeholder="ornek: ahmet01"
                   class="w-full rounded-2xl border border-white/10 bg-slate-950/80 px-4 py-3 text-sm text-white outline-none transition focus:border-emerald-400"
@@ -47,18 +48,28 @@
               </label>
 
               <button
-                id="connectButton"
+                id="connect-button"
+                type="submit"
                 class="mt-4 w-full rounded-2xl bg-emerald-500 px-4 py-3 text-sm font-semibold text-slate-950 transition hover:bg-emerald-400"
               >
                 Connect
               </button>
 
-              <p id="connectInfo" class="mt-3 text-xs text-slate-400">Kullanici adini girip baglan.</p>
-            </div>
+              <p id="server-note" class="mt-3 text-xs text-slate-400">Kullanici adini girip baglan.</p>
+            </form>
           </div>
 
           <div class="mt-8 rounded-2xl border border-white/10 bg-slate-950/60 p-5">
-            <p class="text-sm font-medium text-white">Beklenen akis</p>
+            <div class="flex items-center justify-between gap-3">
+              <div>
+                <p class="text-sm font-medium text-white">Beklenen akis</p>
+                <p id="connection-state" class="mt-2 text-sm text-slate-300">Bekleniyor</p>
+              </div>
+              <div class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm text-slate-300">
+                <span id="online-count">0</span> online
+              </div>
+            </div>
+
             <div class="mt-4 space-y-3 text-sm text-slate-300">
               <div class="flex items-center gap-3">
                 <span class="flex h-7 w-7 items-center justify-center rounded-full bg-white/10 text-xs">1</span>
@@ -74,6 +85,14 @@
               </div>
             </div>
           </div>
+
+          <div class="mt-8 rounded-2xl border border-white/10 bg-slate-950/60 p-5">
+            <div class="mb-4 flex items-center justify-between">
+              <p class="text-sm font-medium text-white">Aktif Kullanici</p>
+              <span id="current-user" class="rounded-full bg-white/10 px-3 py-1 text-xs text-slate-200">-</span>
+            </div>
+            <ul id="users" class="flex flex-wrap gap-2"></ul>
+          </div>
         </aside>
 
         <section class="flex flex-col bg-slate-950/40">
@@ -81,276 +100,217 @@
             <div>
               <p class="text-xs uppercase tracking-[0.28em] text-slate-400">Chat Preview</p>
               <h2 class="mt-1 text-2xl font-semibold">Genel Oda</h2>
-              <p id="activeUserLabel" class="mt-1 text-sm text-slate-400">Henuz baglanti yok</p>
+              <p class="mt-1 text-sm text-slate-400">Gonderilen ve alinan mesajlar burada gorunur</p>
             </div>
-            <div id="connectionBadge" class="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-slate-300">
-              Waiting
+            <div class="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-slate-300">
+              <span id="header-connection-state">Waiting</span>
             </div>
           </header>
 
           <div id="messages" class="flex-1 space-y-5 overflow-y-auto px-5 py-6 sm:px-8">
-            <div id="emptyState" class="flex justify-center">
+            <div id="empty-state" class="flex justify-center">
               <span class="rounded-full bg-white/5 px-4 py-2 text-xs text-slate-400">Connect sonrasi mesajlar burada akacak</span>
             </div>
           </div>
 
-          <footer class="border-t border-white/10 px-5 py-4 sm:px-8">
+          <form id="message-form" class="border-t border-white/10 px-5 py-4 sm:px-8">
             <div class="flex items-center gap-3 rounded-2xl border border-white/10 bg-slate-900/70 p-3">
               <input
-                id="messageInput"
+                id="message-input"
                 type="text"
                 placeholder="Mesaj yaz..."
                 class="flex-1 bg-transparent px-3 py-2 text-sm text-white outline-none placeholder:text-slate-500 disabled:cursor-not-allowed"
                 disabled
               >
               <button
-                id="sendButton"
+                id="send-button"
+                type="submit"
                 class="rounded-xl bg-emerald-500 px-5 py-2.5 text-sm font-semibold text-slate-950 transition hover:bg-emerald-400 disabled:bg-slate-700 disabled:text-slate-400"
                 disabled
               >
                 Gonder
               </button>
             </div>
-          </footer>
+          </form>
         </section>
       </div>
     </section>
   </main>
 
-  <script type="module">
-    import { io } from "https://cdn.socket.io/4.8.3/socket.io.esm.min.js";
+  <script>
+    const loginForm = document.getElementById("login-form");
+    const messageForm = document.getElementById("message-form");
+    const usernameInput = document.getElementById("username");
+    const messageInput = document.getElementById("message-input");
+    const sendButton = document.getElementById("send-button");
+    const messagesEl = document.getElementById("messages");
+    const usersEl = document.getElementById("users");
+    const currentUserEl = document.getElementById("current-user");
+    const onlineCountEl = document.getElementById("online-count");
+    const connectionStateEl = document.getElementById("connection-state");
+    const serverNoteEl = document.getElementById("server-note");
+    const headerConnectionStateEl = document.getElementById("header-connection-state");
+    const emptyStateEl = document.getElementById("empty-state");
 
-    const usernameInput = document.getElementById("usernameInput");
-    const connectButton = document.getElementById("connectButton");
-    const connectInfo = document.getElementById("connectInfo");
-    const activeUserLabel = document.getElementById("activeUserLabel");
-    const connectionBadge = document.getElementById("connectionBadge");
-    const messages = document.getElementById("messages");
-    const emptyState = document.getElementById("emptyState");
-    const messageInput = document.getElementById("messageInput");
-    const sendButton = document.getElementById("sendButton");
-
-    let currentUser = "";
-    let isConnected = false;
     let socket = null;
-    const SOCKET_URL = "http://localhost:3000";
+    let connectedUser = null;
 
-    function getTime() {
-      return new Date().toLocaleTimeString("tr-TR", {
+    function escapeHtml(value) {
+      return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#39;");
+    }
+
+    function formatTime(iso) {
+      return new Date(iso).toLocaleTimeString("tr-TR", {
         hour: "2-digit",
         minute: "2-digit"
       });
     }
 
-    function getInitial(name) {
-      return name.charAt(0).toUpperCase();
+    function setConnectionState(text) {
+      connectionStateEl.textContent = text;
+      headerConnectionStateEl.textContent = text;
     }
 
     function removeEmptyState() {
-      if (emptyState && emptyState.parentNode) {
-        emptyState.parentNode.removeChild(emptyState);
+      if (emptyStateEl && emptyStateEl.parentNode) {
+        emptyStateEl.parentNode.removeChild(emptyStateEl);
       }
     }
 
-    function appendSystemMessage(text) {
+    function appendMessage(content, type = "message", align = "left") {
       removeEmptyState();
-      const item = document.createElement("div");
-      item.className = "flex justify-center";
-      item.innerHTML = `<span class="rounded-full bg-white/5 px-4 py-2 text-xs text-slate-400">${text}</span>`;
-      messages.appendChild(item);
-      messages.scrollTop = messages.scrollHeight;
+      const item = document.createElement("article");
+      const wrapperClass = align === "right" ? "flex justify-end" : align === "center" ? "flex justify-center" : "";
+      const bubbleClass = type === "system"
+        ? "max-w-xl rounded-2xl border border-white/10 bg-white/5 p-4 text-slate-300"
+        : align === "right"
+          ? "max-w-xl rounded-2xl rounded-tr-sm bg-emerald-500 p-4 text-slate-950"
+          : "max-w-xl rounded-2xl rounded-tl-sm bg-white/10 p-4 text-white";
+
+      item.className = wrapperClass;
+      item.innerHTML = `<div class="${bubbleClass}">${content}</div>`;
+      messagesEl.appendChild(item);
+      messagesEl.scrollTop = messagesEl.scrollHeight;
     }
 
-    function appendIncomingMessage(name, text) {
-      removeEmptyState();
-      const item = document.createElement("div");
-      item.className = "flex items-start gap-3";
-      item.innerHTML = `
-        <div class="flex h-10 w-10 items-center justify-center rounded-full bg-emerald-500 font-semibold text-slate-950">${getInitial(name)}</div>
-        <div class="max-w-xl rounded-2xl rounded-tl-sm bg-white/10 px-4 py-3">
-          <div class="flex items-center gap-2">
-            <span class="text-sm font-semibold">${name}</span>
-            <span class="text-xs text-slate-400">${getTime()}</span>
-          </div>
-          <p class="mt-2 text-sm leading-6 text-slate-200">${text}</p>
-        </div>
-      `;
-      messages.appendChild(item);
-      messages.scrollTop = messages.scrollHeight;
-    }
+    function renderUsers(users) {
+      usersEl.innerHTML = "";
+      onlineCountEl.textContent = users.length;
 
-    function appendOutgoingMessage(name, text) {
-      removeEmptyState();
-      const item = document.createElement("div");
-      item.className = "flex justify-end";
-      item.innerHTML = `
-        <div class="max-w-xl rounded-2xl rounded-tr-sm bg-emerald-500 px-4 py-3 text-slate-950">
-          <div class="flex items-center justify-end gap-2">
-            <span class="text-xs text-emerald-950/70">${getTime()}</span>
-            <span class="text-sm font-semibold">${name}</span>
-          </div>
-          <p class="mt-2 text-sm leading-6">${text}</p>
-        </div>
-      `;
-      messages.appendChild(item);
-      messages.scrollTop = messages.scrollHeight;
-    }
-
-    function setConnectedState(name) {
-      currentUser = name;
-      isConnected = true;
-
-      connectInfo.textContent = `${name} olarak baglandin.`;
-      activeUserLabel.textContent = `${name} aktif durumda`;
-      connectionBadge.textContent = "Connected";
-      connectionBadge.className = "rounded-full border border-emerald-400/20 bg-emerald-400/10 px-4 py-2 text-sm text-emerald-300";
-      messageInput.disabled = false;
-      sendButton.disabled = false;
-      messageInput.focus();
-    }
-
-    function setDisconnectedState(text) {
-      isConnected = false;
-      connectionBadge.textContent = "Disconnected";
-      connectionBadge.className = "rounded-full border border-red-400/20 bg-red-400/10 px-4 py-2 text-sm text-red-300";
-      connectInfo.textContent = text;
-      activeUserLabel.textContent = "Baglanti koptu";
-      messageInput.disabled = true;
-      sendButton.disabled = true;
-    }
-
-    function normalizeMessage(payload) {
-      if (typeof payload === "string") {
-        return { username: "Oda", message: payload };
-      }
-
-      return {
-        username: payload.username || payload.user || payload.name || "Oda",
-        message: payload.message || payload.text || "",
-        system: Boolean(payload.system)
-      };
-    }
-
-    function renderIncomingPayload(payload) {
-      const data = normalizeMessage(payload);
-      if (!data.message) {
-        return;
-      }
-
-      if (data.system) {
-        appendSystemMessage(data.message);
-        return;
-      }
-
-      if (data.username === currentUser) {
-        return;
-      }
-
-      appendIncomingMessage(data.username, data.message);
-    }
-
-    function bindSocketEvents() {
-      socket.on("connect", () => {
-        setConnectedState(currentUser);
-        appendSystemMessage(`${currentUser} odaya katildi`);
+      users.forEach((user) => {
+        const item = document.createElement("li");
+        item.className = "rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-sm text-slate-200";
+        item.textContent = user;
+        usersEl.appendChild(item);
       });
-
-      socket.on("disconnect", () => {
-        setDisconnectedState("Sunucu baglantisi kesildi.");
-        appendSystemMessage("Baglanti kesildi");
-      });
-
-      socket.on("connect_error", () => {
-        setDisconnectedState("Socket sunucusuna baglanilamadi. Sunucunun acik oldugunu kontrol et.");
-      });
-
-      socket.on("chat:bootstrap", (payload) => {
-        if (Array.isArray(payload?.messages)) {
-          payload.messages.forEach((entry) => {
-            const data = normalizeMessage(entry);
-            if (!data.message) {
-              return;
-            }
-
-            if (data.system) {
-              appendSystemMessage(data.message);
-            } else if (data.username === currentUser) {
-              appendOutgoingMessage(data.username, data.message);
-            } else {
-              appendIncomingMessage(data.username, data.message);
-            }
-          });
-        }
-      });
-
-      socket.on("chat:system", (payload) => {
-        const data = normalizeMessage(payload);
-        if (data.message) {
-          appendSystemMessage(data.message);
-        }
-      });
-
-      socket.on("chat:message", renderIncomingPayload);
-      socket.on("message", renderIncomingPayload);
-      socket.on("newMessage", renderIncomingPayload);
-      socket.on("receiveMessage", renderIncomingPayload);
-      socket.on("chat message", renderIncomingPayload);
     }
 
-    function connectUser() {
-      const name = usernameInput.value.trim();
-      if (!name) {
-        connectInfo.textContent = "Lutfen gecerli bir kullanici adi gir.";
-        return;
-      }
+    loginForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      const username = usernameInput.value.trim() || `guest-${Date.now().toString().slice(-4)}`;
 
       if (socket) {
         socket.disconnect();
       }
 
-      currentUser = name;
-      connectInfo.textContent = "Socket baglantisi kuruluyor...";
-      activeUserLabel.textContent = `${name} baglaniyor`;
-      connectionBadge.textContent = "Connecting";
-      connectionBadge.className = "rounded-full border border-amber-400/20 bg-amber-400/10 px-4 py-2 text-sm text-amber-300";
-
-      socket = io(SOCKET_URL, {
+      socket = io("http://localhost:3000", {
         transports: ["websocket", "polling"],
-        auth: { username: name },
-        query: { username: name }
+        query: {
+          username
+        }
       });
 
-      bindSocketEvents();
-    }
+      setConnectionState("Baglaniyor");
+      serverNoteEl.textContent = "Sunucuya baglanti kuruluyor";
 
-    function sendMessage() {
+      socket.on("connect", () => {
+        connectedUser = username;
+        currentUserEl.textContent = username;
+        messageInput.disabled = false;
+        sendButton.disabled = false;
+        setConnectionState("Bagli");
+        serverNoteEl.textContent = "Gercek zamanli sohbet aktif";
+        messageInput.focus();
+      });
+
+      socket.on("chat:bootstrap", (payload) => {
+        currentUserEl.textContent = payload.currentUser;
+        serverNoteEl.textContent = `Sunucu saati ${formatTime(payload.serverTime)}`;
+        renderUsers(payload.users);
+        appendMessage(
+          `<div class="mb-2 flex items-center justify-between gap-3 text-xs text-slate-400"><strong class="text-slate-200">Sistem</strong><span>${formatTime(
+            payload.serverTime
+          )}</span></div><p>${escapeHtml(payload.currentUser)} olarak baglandin.</p>`,
+          "system",
+          "center"
+        );
+      });
+
+      socket.on("chat:users", (users) => {
+        renderUsers(users);
+      });
+
+      socket.on("chat:system", (payload) => {
+        appendMessage(
+          `<div class="mb-2 flex items-center justify-between gap-3 text-xs text-slate-400"><strong class="text-slate-200">Sistem</strong><span>${formatTime(
+            payload.at
+          )}</span></div><p>${escapeHtml(payload.message)}</p>`,
+          "system",
+          "center"
+        );
+      });
+
+      socket.on("chat:message", (payload) => {
+        const isSelf = payload.user === connectedUser;
+        const metaClass = isSelf ? "text-emerald-950/70" : "text-slate-400";
+        const nameClass = isSelf ? "text-slate-950" : "text-white";
+
+        appendMessage(
+          `<div class="mb-2 flex items-center justify-between gap-3 text-xs ${metaClass}"><strong class="${nameClass}">${escapeHtml(
+            payload.user
+          )}</strong><span>${formatTime(payload.at)}</span></div><p>${escapeHtml(
+            payload.text
+          )}</p>`,
+          "message",
+          isSelf ? "right" : "left"
+        );
+      });
+
+      socket.on("disconnect", () => {
+        setConnectionState("Koptu");
+        serverNoteEl.textContent = "Baglanti kesildi, yeniden deneniyor";
+        messageInput.disabled = true;
+        sendButton.disabled = true;
+      });
+
+      socket.on("reconnect_attempt", () => {
+        setConnectionState("Yeniden baglaniyor");
+      });
+
+      socket.on("connect_error", (error) => {
+        setConnectionState("Hata");
+        serverNoteEl.textContent = `Baglanti hatasi: ${error.message}`;
+      });
+    });
+
+    messageForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+
       const text = messageInput.value.trim();
-      if (!isConnected || !text || !socket) {
+
+      if (!text || !socket) {
         return;
       }
 
-      appendOutgoingMessage(currentUser, text);
-      socket.emit("chat:message", {
-        username: currentUser,
-        message: text
-      });
+      socket.emit("chat:message", { text });
       messageInput.value = "";
-    }
-
-    connectButton.addEventListener("click", connectUser);
-    sendButton.addEventListener("click", sendMessage);
-
-    usernameInput.addEventListener("keydown", (event) => {
-      if (event.key === "Enter") {
-        connectUser();
-      }
-    });
-
-    messageInput.addEventListener("keydown", (event) => {
-      if (event.key === "Enter") {
-        event.preventDefault();
-        sendMessage();
-      }
+      messageInput.focus();
     });
   </script>
 </body>
